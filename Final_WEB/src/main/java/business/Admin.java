@@ -2,6 +2,7 @@ package business;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Date;
 
 @Entity
@@ -40,4 +41,14 @@ public class Admin {
         this.passwd = passwd;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Collection<business.Product> Product;
+
+    public Collection<business.Product> getProduct() {
+        return Product;
+    }
+
+    public void setProduct(Collection<business.Product> product) {
+        Product = product;
+    }
 }

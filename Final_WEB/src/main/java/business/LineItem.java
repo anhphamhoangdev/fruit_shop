@@ -28,7 +28,7 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private Collection<Product> item;
 
     public Collection<Product> getItem() {

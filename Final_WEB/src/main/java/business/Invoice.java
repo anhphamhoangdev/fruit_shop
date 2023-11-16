@@ -29,14 +29,25 @@ public class Invoice {
         this.date = date;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private LineItem listItems;
+    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
+    private Collection<LineItem> listlineitem;
 
-    public LineItem getListItems() {
-        return listItems;
+    public Collection<LineItem> getListlineitem() {
+        return listlineitem;
     }
 
-    public void setListItems(LineItem listItems) {
-        this.listItems = listItems;
+    public void setListlineitem(Collection<LineItem> listlineitem) {
+        this.listlineitem = listlineitem;
+    }
+
+    @ManyToOne(optional = false)
+    private Customer customer;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

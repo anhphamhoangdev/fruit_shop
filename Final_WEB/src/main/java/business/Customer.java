@@ -2,6 +2,8 @@ package business;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Customer {
     @Id
@@ -48,14 +50,14 @@ public class Customer {
         this.address = address;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    private Invoice bills;
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE, CascadeType.PERSIST}, fetch = FetchType.EAGER, mappedBy = "customer")
+    private Collection<Invoice> bill;
 
-    public Invoice getBills() {
-        return bills;
+    public Collection<Invoice> getBill() {
+        return bill;
     }
 
-    public void setBills(Invoice bills) {
-        this.bills = bills;
+    public void setBill(Collection<Invoice> bill) {
+        this.bill = bill;
     }
 }

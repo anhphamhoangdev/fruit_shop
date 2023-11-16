@@ -74,14 +74,4 @@ public class Product {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Collection<Admin> admin;
-
-    public Collection<Admin> getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Collection<Admin> admin) {
-        this.admin = admin;
-    }
 }
