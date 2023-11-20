@@ -29,18 +29,7 @@ public class Invoice {
         this.date = date;
     }
 
-    @OneToMany(cascade = {CascadeType.REFRESH, CascadeType.REMOVE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    private Collection<LineItem> listlineitem;
-
-    public Collection<LineItem> getListlineitem() {
-        return listlineitem;
-    }
-
-    public void setListlineitem(Collection<LineItem> listlineitem) {
-        this.listlineitem = listlineitem;
-    }
-
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Customer customer;
 
     public Customer getCustomer() {
@@ -49,5 +38,16 @@ public class Invoice {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Collection<LineItem> lineItem;
+
+    public Collection<LineItem> getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(Collection<LineItem> lineItem) {
+        this.lineItem = lineItem;
     }
 }

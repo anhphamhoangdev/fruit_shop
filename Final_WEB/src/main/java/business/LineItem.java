@@ -28,14 +28,14 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    private Collection<Product> item;
+    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    private Product product;
 
-    public Collection<Product> getItem() {
-        return item;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setItem(Collection<Product> item) {
-        this.item = item;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }
