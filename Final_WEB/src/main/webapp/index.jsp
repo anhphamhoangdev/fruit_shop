@@ -1,12 +1,12 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
-
     <!-- title -->
     <title>Fruitkha</title>
 
@@ -34,7 +34,6 @@
 
 </head>
 <body>
-
 <!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
@@ -63,39 +62,39 @@
                             <li class="current-list-item"><a href="#">Home</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.jsp">Static Home</a></li>
-                                    <li><a href="index_2.html">Slider Home</a></li>
+                                    <li><a href="index_2.jsp">Slider Home</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.jsp">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.html">404 page</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="404.jsp">404 page</a></li>
+                                    <li><a href="about.jsp">About</a></li>
+                                    <li><a href="cart.jsp">Cart</a></li>
+                                    <li><a href="checkout.jsp">Check Out</a></li>
+                                    <li><a href="contact.jsp">Contact</a></li>
+                                    <li><a href="news.jsp">News</a></li>
                                     <li><a href="shop.html">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="news.html">News</a>
+                            <li><a href="news.jsp">News</a>
                                 <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
+                                    <li><a href="news.jsp">News</a></li>
+                                    <li><a href="single-news.jsp">Single News</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
+                            <li><a href="contact.jsp">Contact</a></li>
+                            <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="shop.jsp">Shop</a></li>
+                                    <li><a href="checkout.jsp">Check Out</a></li>
+                                    <li><a href="single-product.jsp">Single Product</a></li>
+                                    <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
@@ -111,6 +110,11 @@
 </div>
 <!-- end header -->
 
+<!-- Add your JSP code here -->
+
+<!-- Add your JavaScript code here -->
+</body>
+</html>
 <!-- search area -->
 <div class="search-area">
     <div class="container">
@@ -193,8 +197,6 @@
 
     </div>
 </div>
-<!-- end features list section -->
-
 <!-- product section -->
 <div class="product-section mt-150 mb-150">
     <div class="container">
@@ -208,41 +210,24 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p class="product-price"><span>Per Kg</span> 85$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p class="product-price"><span>Per Kg</span> 70$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
+            <c:forEach var="product" items="${products}">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <!-- Assuming you have an image URL property in your 'product' object -->
+                            <a href="single-product.html"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+<%--                                <a href="single-product.html"></a>--%>
 
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
+                        </div>
+                        <h3>${product.fruitID}</h3>
+                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
-                    <h3>Lemon</h3>
-                    <p class="product-price"><span>Per Kg</span> 35$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>
-<!-- end product section -->
 
 <!-- cart banner section -->
 <section class="cart-banner pt-100 pb-100">

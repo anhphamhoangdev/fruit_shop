@@ -3,6 +3,10 @@ package Data;
 import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.util.List;
+
 public class ProductDB {
     public static void insert(Product product) {
         EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
@@ -17,5 +21,10 @@ public class ProductDB {
         } finally {
             em2.close();
         }
+    }
+    public static List<Product> getAllProducts() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
+        return query.getResultList();
     }
 }
