@@ -2,8 +2,9 @@ package business;
 
 import jakarta.persistence.*;
 
+import java.text.NumberFormat;
 import java.util.Collection;
-
+import business.*;
 @Entity
 public class LineItem {
     @Id
@@ -18,7 +19,7 @@ public class LineItem {
     }
 
     @Basic
-    private Integer quantity;
+    private Integer quantity =1;
 
     public Integer getQuantity() {
         return quantity;
@@ -37,5 +38,15 @@ public class LineItem {
 
     public void setItem(Product item) {
         this.item = item;
+    }
+
+    public double getTotal() {
+        double total = item.getPrice() * quantity;
+        return total;
+    }
+
+    public String getTotalCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(this.getTotal());
     }
 }

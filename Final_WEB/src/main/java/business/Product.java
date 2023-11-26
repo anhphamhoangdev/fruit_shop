@@ -2,6 +2,7 @@ package business;
 
 import jakarta.persistence.*;
 
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -9,6 +10,34 @@ import java.util.Date;
 public class Product {
     @Id
     private String fruitID;
+
+
+    @Basic
+    private String description;
+
+
+    @Basic
+    private String Origin;
+
+
+
+    @Basic
+    private Integer price;
+
+
+
+    @Basic
+    private Date exp;
+
+
+    @Basic
+    private Date dateInput;
+
+
+
+
+    @Basic
+    private String name;
 
     public String getFruitID() {
         return fruitID;
@@ -18,30 +47,21 @@ public class Product {
         this.fruitID = fruitID;
     }
 
-    @Basic
-    private String description;
-
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String fruitName) {
-        this.description = fruitName;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
-    @Basic
-    private String Origin;
 
     public String getOrigin() {
         return Origin;
     }
 
-    public void setOrigin(String fruitType) {
-        this.Origin = fruitType;
+    public void setOrigin(String origin) {
+        Origin = origin;
     }
-
-    @Basic
-    private Integer price;
 
     public Integer getPrice() {
         return price;
@@ -51,9 +71,6 @@ public class Product {
         this.price = price;
     }
 
-    @Basic
-    private Date exp;
-
     public Date getExp() {
         return exp;
     }
@@ -61,9 +78,6 @@ public class Product {
     public void setExp(Date exp) {
         this.exp = exp;
     }
-
-    @Basic
-    private Date dateInput;
 
     public Date getDateInput() {
         return dateInput;
@@ -73,15 +87,16 @@ public class Product {
         this.dateInput = dateInput;
     }
 
-
-    @Basic
-    private String name;
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPriceCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(price);
     }
 }

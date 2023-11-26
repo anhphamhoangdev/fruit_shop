@@ -1,5 +1,13 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: COMPUTER
+  Date: 11/26/2023
+  Time: 4:13 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
     <!-- title -->
-    <title>Fruitkha</title>
+    <title>Cart</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
@@ -34,6 +43,7 @@
 
 </head>
 <body>
+
 <!--PreLoader-->
 <div class="loader">
     <div class="loader-inner">
@@ -62,39 +72,39 @@
                             <li class="current-list-item"><a href="#">Home</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.jsp">Static Home</a></li>
-                                    <li><a href="index_2.jsp">Slider Home</a></li>
+                                    <li><a href="index_2.html">Slider Home</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.jsp">About</a></li>
+                            <li><a href="about.html">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.jsp">404 page</a></li>
-                                    <li><a href="about.jsp">About</a></li>
-                                    <li><a href="cart.jsp">Cart</a></li>
-                                    <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="contact.jsp">Contact</a></li>
-                                    <li><a href="news.jsp">News</a></li>
-                                    <li><a href="shop.jsp"></a> </li>
+                                    <li><a href="404.html">404 page</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="shop.jsp">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="news.jsp">News</a>
+                            <li><a href="news.html">News</a>
                                 <ul class="sub-menu">
-                                    <li><a href="news.jsp">News</a></li>
-                                    <li><a href="single-news.jsp">Single News</a></li>
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="single-news.html">Single News</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.jsp">Contact</a></li>
+                            <li><a href="contact.html">Contact</a></li>
                             <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
-                                    <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.jsp">Single Product</a></li>
-                                    <li><a href="cart.jsp">Cart</a></li>
+                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="cart.html">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
@@ -110,11 +120,6 @@
 </div>
 <!-- end header -->
 
-<!-- Add your JSP code here -->
-
-<!-- Add your JavaScript code here -->
-</body>
-</html>
 <!-- search area -->
 <div class="search-area">
     <div class="container">
@@ -132,180 +137,143 @@
         </div>
     </div>
 </div>
-<!-- end search area -->
+<!-- end search arewa -->
 
-<!-- hero area -->
-<div class="hero-area hero-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 offset-lg-2 text-center">
-                <div class="hero-text">
-                    <div class="hero-text-tablecell">
-                        <p class="subtitle">Fresh & Organic</p>
-                        <h1>Delicious Seasonal Fruits</h1>
-                        <div class="hero-btns">
-                            <a href="shop.jsp" class="boxed-btn">Fruit Collection</a>
-                            <a href="contact.html" class="bordered-btn">Contact Us</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end hero area -->
-
-<!-- features list section -->
-<div class="list-section pt-80 pb-80">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <div class="list-box d-flex align-items-center">
-                    <div class="list-icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Free Shipping</h3>
-                        <p>When order over $75</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <div class="list-box d-flex align-items-center">
-                    <div class="list-icon">
-                        <i class="fas fa-phone-volume"></i>
-                    </div>
-                    <div class="content">
-                        <h3>24/7 Support</h3>
-                        <p>Get support all day</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="list-box d-flex justify-content-start align-items-center">
-                    <div class="list-icon">
-                        <i class="fas fa-sync"></i>
-                    </div>
-                    <div class="content">
-                        <h3>Refund</h3>
-                        <p>Get refund within 3 days!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- product section -->
-<div class="product-section mt-150 mb-150">
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Our</span> Products</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+                <div class="breadcrumb-text">
+                    <p>Fresh and Organic</p>
+                    <h1>Cart</h1>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
 
+<!-- cart -->
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
         <div class="row">
-            <c:forEach var="product" items="${products}">
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <!-- Assuming you have an image URL property in your 'product' object -->
-                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
-<%--                                <a href="single-product.html"></a>--%>
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <!--						<table class="cart-table">-->
+                    <!--							<thead class="cart-table-head">-->
+                    <!--								<tr class="table-head-row">-->
+                    <!--									<th class="product-remove"></th>-->
+                    <!--									<th class="product-image">Product Image</th>-->
+                    <!--									<th class="product-name">Name</th>-->
+                    <!--									<th class="product-price">Price</th>-->
+                    <!--									<th class="product-quantity">Quantity</th>-->
+                    <!--									<th class="product-total">Total</th>-->
+                    <!--								</tr>-->
+                    <!--							</thead>-->
+                    <!--							<tbody>-->
+                    <!--								<tr class="table-body-row">-->
+                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
+                    <!--									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>-->
+                    <!--									<td class="product-name">Strawberry</td>-->
+                    <!--									<td class="product-price">$85</td>-->
+                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
+                    <!--									<td class="product-total">1</td>-->
+                    <!--								</tr>-->
+                    <!--								<tr class="table-body-row">-->
+                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
+                    <!--									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>-->
+                    <!--									<td class="product-name">Berry</td>-->
+                    <!--									<td class="product-price">$70</td>-->
+                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
+                    <!--									<td class="product-total">1</td>-->
+                    <!--								</tr>-->
+                    <!--								<tr class="table-body-row">-->
+                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
+                    <!--									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>-->
+                    <!--									<td class="product-name">Lemon</td>-->
+                    <!--									<td class="product-price">$35</td>-->
+                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
+                    <!--									<td class="product-total">1</td>-->
+                    <!--								</tr>-->
+                    <!--							</tbody>-->
+                    <!--						</table>-->
 
-                        </div>
-                        <h3>${product.name}</h3>
-                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-<%--                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>--%>
-                        <form class="cart-btn" action="cart" method="post">
-                            <input type="hidden" name="fruitID" value="${product.fruitID}">
-                            <input type="submit"  value="Add To Cart">
+                    <table class="cart-table">
+                        <tr>
+                            <th>Quantity</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+
+                        <c:forEach var="i" items="${cart.items}">
+                            <tr>
+                                <td>
+                                    <form action="cart" method="post">
+                                        <input type="hidden" name="fruitID" value="${i.item.fruitID}">
+                                        <input type=text name="quantity" value="${i.quantity}" id="quantity">
+                                        <input type="hidden" name="update" value="true">
+                                        <input type="submit" value="Update">
+                                    </form>
+                                </td>
+                                <td>${i.item.description}</td>
+                                <td>${i.item.priceCurrencyFormat}</td>
+                                <td>${i.totalCurrencyFormat}</td>
+                                <td>
+                                    <a href="cart?fruitID=${i.item.fruitID}&amp;quantity=0">Remove Item</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="total-section">
+                    <table class="total-table">
+                        <thead class="total-table-head">
+                        <tr class="table-total-row">
+                            <th>Total</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="total-data">
+                            <td><strong>Subtotal: </strong></td>
+                            <td>$500</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Shipping: </strong></td>
+                            <td>$45</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Total: </strong></td>
+                            <td>$545</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <a href="cart.html" class="boxed-btn">Update Cart</a>
+                        <a href="checkout.html" class="boxed-btn black">Check Out</a>
+                    </div>
+                </div>
+
+                <div class="coupon-section">
+                    <h3>Apply Coupon</h3>
+                    <div class="coupon-form-wrap">
+                        <form action="index.jsp">
+                            <p><input type="text" placeholder="Coupon"></p>
+                            <p><input type="submit" value="Apply"></p>
                         </form>
                     </div>
                 </div>
-            </c:forEach>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-<!-- latest news -->
-<div class="latest-news pt-150 pb-150">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Our</span> News</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-latest-news">
-                    <a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
-                    <div class="news-text-box">
-                        <h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
-                        <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> Admin</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-                        </p>
-                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-latest-news">
-                    <a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
-                    <div class="news-text-box">
-                        <h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
-                        <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> Admin</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-                        </p>
-                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-                <div class="single-latest-news">
-                    <a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
-                    <div class="news-text-box">
-                        <h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
-                        <p class="blog-meta">
-                            <span class="author"><i class="fas fa-user"></i> Admin</span>
-                            <span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-                        </p>
-                        <p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-                        <a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <a href="news.html" class="boxed-btn">More News</a>
             </div>
         </div>
     </div>
 </div>
-<!-- end latest news -->
+<!-- end cart -->
 
 <!-- logo carousel -->
 <div class="logo-carousel-section">
