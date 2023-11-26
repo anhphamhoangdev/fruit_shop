@@ -29,13 +29,13 @@ public class LineItem {
     }
 
     @OneToOne(cascade = CascadeType.ALL, optional = false)
-    private Product product;
+    private Product item;
 
-    public Product getProduct() {
-        return product;
+    public Product getItem() {
+        return item;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setItem(Product item) {
+        this.item = item;
     }
 }

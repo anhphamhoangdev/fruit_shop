@@ -1,4 +1,7 @@
-<%--
+<%@ page import="business.Product" %>
+<%@ page import="Data.ProductDB" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %><%--
   Created by IntelliJ IDEA.
   User: COMPUTER
   Date: 11/25/2023
@@ -58,7 +61,7 @@
                 <div class="main-menu-wrap">
                     <!-- logo -->
                     <div class="site-logo">
-                        <a href="index.html">
+                        <a href="index.jsp">
                             <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
@@ -69,7 +72,7 @@
                         <ul>
                             <li class="current-list-item"><a href="#">Home</a>
                                 <ul class="sub-menu">
-                                    <li><a href="index.html">Static Home</a></li>
+                                    <li><a href="index.jsp">Static Home</a></li>
                                     <li><a href="index_2.html">Slider Home</a></li>
                                 </ul>
                             </li>
@@ -82,7 +85,7 @@
                                     <li><a href="checkout.html">Check Out</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="news.html">News</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="shop.jsp">Shop</a></li>
                                 </ul>
                             </li>
                             <li><a href="news.html">News</a>
@@ -92,9 +95,9 @@
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
+                            <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.html">Check Out</a></li>
                                     <li><a href="single-product.html">Single Product</a></li>
                                     <li><a href="cart.html">Cart</a></li>
@@ -168,68 +171,27 @@
                 </div>
             </div>
         </div>
+        <%
+            List<Product> products = ProductDB.getAllProducts();
+            request.setAttribute("products", products);
+        %>
 
         <div class="row product-lists">
-            <div class="col-lg-4 col-md-6 text-center strawberry">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+            <c:forEach var="product" items="${products}">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <!-- Assuming you have an image URL property in your 'product' object -->
+                            <a href="single-product.html"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+                                <%--                                <a href="single-product.html"></a>--%>
+
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
-                    <h3>Strawberry</h3>
-                    <p class="product-price"><span>Per Kg</span> 85$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center berry">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p class="product-price"><span>Per Kg</span> 70$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center lemon">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-                    </div>
-                    <h3>Lemon</h3>
-                    <p class="product-price"><span>Per Kg</span> 35$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-4.jpg" alt=""></a>
-                    </div>
-                    <h3>Avocado</h3>
-                    <p class="product-price"><span>Per Kg</span> 50$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-5.jpg" alt=""></a>
-                    </div>
-                    <h3>Green Apple</h3>
-                    <p class="product-price"><span>Per Kg</span> 45$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center strawberry">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-6.jpg" alt=""></a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p class="product-price"><span>Per Kg</span> 80$ </p>
-                    <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
+            </c:forEach>
         </div>
 
         <div class="row">
@@ -301,7 +263,7 @@
                 <div class="footer-box pages">
                     <h2 class="widget-title">Pages</h2>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.jsp">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Shop</a></li>
                         <li><a href="news.html">News</a></li>
@@ -313,7 +275,7 @@
                 <div class="footer-box subscribe">
                     <h2 class="widget-title">Subscribe</h2>
                     <p>Subscribe to our mailing list to get the latest updates.</p>
-                    <form action="index.html">
+                    <form action="index.jsp">
                         <input type="email" placeholder="Email">
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>

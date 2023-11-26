@@ -24,15 +24,17 @@ public class test {
 //        lineItem.setProduct(product);
 /*        LineItemDB.insert(lineItem);*/
 //
-//        Product product1 = new Product();
-//        product1.setFruitID("F003");
-//        product1.setDescription("A citrus orange");
-//        product1.setOrigin("Florida");
-//        product1.setPrice(5);
-//        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-//        product1.setExp(dateFormat1.parse("2023-12-15"));
-//        product1.setDateInput(new Date());
-//        ProductDB.insert(product1);
+        Product product1 = new Product();
+        product1.setFruitID("F004");
+        product1.setDescription("A citrus Strawberry");
+        product1.setOrigin("Florida");
+        product1.setPrice(7);
+        product1.setName("Strawberry");
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        product1.setExp(dateFormat1.parse("2023-12-15"));
+        product1.setDateInput(new Date());
+        ProductDB.insert(product1);
+
 
 //        LineItem lineItem1 = new LineItem();
 //        lineItem1.setLineItemID("L002");
@@ -59,10 +61,10 @@ public class test {
 
 
         // Add the LineItem to the Invoice's list of line items
-        List<Product> products = ProductDB.getAllProducts();
-
-        for (Product Item1 : products) {
-            System.out.println("LineItem ID: " + Item1.getFruitID());
+//        List<Product> products = ProductDB.getAllProducts();
+//
+//        for (Product Item1 : products) {
+//            System.out.println("LineItem ID: " + Item1.getFruitID());
 
 
 //
@@ -78,4 +80,3 @@ public class test {
 //        }
 //    }
 }}
-}

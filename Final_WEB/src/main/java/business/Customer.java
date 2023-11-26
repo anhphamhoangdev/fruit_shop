@@ -60,4 +60,26 @@ public class Customer {
     public void setBill(Collection<Invoice> bill) {
         this.bill = bill;
     }
+
+    @Basic
+    private String Email;
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    @Basic
+    private String creditCard;
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
+    }
 }
