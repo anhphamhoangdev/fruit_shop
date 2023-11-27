@@ -58,7 +58,7 @@ public class UserDB {
     public static boolean emailExists(String email) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT COUNT(c) FROM Customer c " +
-                "WHERE c.email = :email";
+                "WHERE c.Email = :email";
         TypedQuery<Long> q = em.createQuery(qString, Long.class);
         q.setParameter("email", email);
         long count = q.getSingleResult();

@@ -1,5 +1,6 @@
 package business;
 
+import java.text.NumberFormat;
 import java.util.*;
 import java.io.Serializable;
 import business.*;
@@ -65,4 +66,29 @@ public class Cart implements Serializable {
             }
         }
     }
+    public double totalBillWithoutShip()
+    {
+        double sum = 0;
+        for (var item: items)
+        {
+            sum += item.getTotal();
+        }
+        return sum;
+    }
+    public String getTotalWithoutShipCurrencyFormat() {
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(this.totalBillWithoutShip());
+    }
+    public double Shipping(){
+        return this.totalBillWithoutShip()*0.1;
+    }
+    public String getTotalCurrentFormat(){
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(this.totalBillWithoutShip()+ this.Shipping());
+    }
+    public String getShipCurrentFormat(){
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        return currency.format(this.Shipping());
+    }
+
 }
