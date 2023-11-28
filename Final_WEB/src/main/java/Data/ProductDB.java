@@ -1,19 +1,31 @@
 package Data;
 
 import business.Product;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
+import java.util.Date;
 import java.util.List;
 
 public class ProductDB {
-    public static void insert(Product product) {
+    public static void insert(String name, String origin, Integer price, Date exp, Date input, String decription) {
+        Product product = new Product();
+        product.setName(name);
+        product.setOrigin(origin);
+        product.setPrice(price);
+        product.setExp(exp);
+        product.setDateInput(input);
+        product.setDescription(decription);
         EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction trans = em2.getTransaction();
         trans.begin();
         try {
+            Query query =em2.createQuery("select p from Product p ORDER BY p.fruitID DESC");
+            query.setMaxResults(1);
+            Product lastProduct = (Product) query.getSingleResult();
+            int index= lastProduct != null ? Integer.parseInt(lastProduct.getFruitID().substring(1))+1:1;
+            String FruitID= "F" + String.format("%03d",index);
+            product.setFruitID(FruitID);
             em2.persist(product);
             trans.commit();
         } catch (Exception e) {

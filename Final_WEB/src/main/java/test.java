@@ -24,16 +24,10 @@ public class test {
 //        lineItem.setProduct(product);
 /*        LineItemDB.insert(lineItem);*/
 //
-        Product product1 = new Product();
-        product1.setFruitID("F004");
-        product1.setDescription("A citrus Strawberry");
-        product1.setOrigin("Florida");
-        product1.setPrice(7);
-        product1.setName("Strawberry");
+
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
-        product1.setExp(dateFormat1.parse("2023-12-15"));
-        product1.setDateInput(new Date());
-        ProductDB.insert(product1);
+
+        ProductDB.insert("melon","Florida",18,dateFormat1.parse("2023-12-1"),dateFormat1.parse("2023-11-20"),"raw fruit");
 
 
 //        LineItem lineItem1 = new LineItem();
