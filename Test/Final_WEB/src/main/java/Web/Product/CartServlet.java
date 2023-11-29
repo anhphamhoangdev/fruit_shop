@@ -46,14 +46,15 @@ public class CartServlet extends HttpServlet {
 
             Product product = ProductDB.selectProduct(productCode);
             LineItem lineItem = new LineItem();
+            lineItem.setLineItemID("L0090");
             lineItem.setItem(product);
             lineItem.setQuantity(quantity);
-//            LineItemDB.insert(lineItem);
             if (quantity > 0) {
                 cart.addItem(lineItem, type);
             } else if (quantity == 0) {
                 cart.removeItem(lineItem);
             }
+
             session.setAttribute("cart", cart);
             url = "/cart.jsp";
         }

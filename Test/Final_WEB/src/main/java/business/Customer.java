@@ -51,7 +51,7 @@ public class Customer {
         this.address = address;
     }
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "customer")
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE,CascadeType.PERSIST}, fetch = FetchType.EAGER, mappedBy = "customer")
     private Collection<Invoice> bill;
 
     public Collection<Invoice> getBill() {

@@ -29,7 +29,7 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(optional = false)
     private Product item;
 
     public Product getItem() {

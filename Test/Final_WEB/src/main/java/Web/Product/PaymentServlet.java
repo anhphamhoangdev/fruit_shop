@@ -24,7 +24,7 @@ public class PaymentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url="/checkout.jsp";
+        String url="/index.jsp";
         ServletContext servletContext= getServletContext();
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
@@ -52,7 +52,7 @@ public class PaymentServlet extends HttpServlet {
             invoice.setInvoiceID(invoice.getInvoiceID());
             invoice.setCustomer(customer);
             invoice.setLineItem(cart.getItems());
-//            InvoiceDB.insert(invoice);
+            InvoiceDB.insert(invoice);
 
             System.out.println("CusID: " + invoice.getCustomer().getId());
 //            System.out.println("Quantity: " + Item1.getQuantity());
