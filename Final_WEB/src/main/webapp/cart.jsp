@@ -1,5 +1,4 @@
-<%@ page import="business.Cart" %>
-<%@ page import="org.apache.taglibs.standard.tag.common.xml.ParseSupport" %><%--
+<%@ page import="business.Cart" %><%--
   Created by IntelliJ IDEA.
   User: COMPUTER
   Date: 11/26/2023
@@ -230,7 +229,6 @@
                     </table>
                 </div>
             </div>
-
             <%Cart cart = (Cart) session.getAttribute("cart");%>
             <%
                 String totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
@@ -278,8 +276,6 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 <!-- end cart -->
 
 <!-- logo carousel -->

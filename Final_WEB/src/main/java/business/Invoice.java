@@ -8,13 +8,14 @@ import java.util.Date;
 @Entity
 public class Invoice {
     @Id
-    private String invoiceID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long invoiceID;
 
-    public String getInvoiceID() {
+    public Long getInvoiceID() {
         return invoiceID;
     }
 
-    public void setInvoiceID(String invoiceID) {
+    public void setInvoiceID(Long invoiceID) {
         this.invoiceID = invoiceID;
     }
 
@@ -40,7 +41,7 @@ public class Invoice {
         this.customer = customer;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<LineItem> lineItem;
 
     public Collection<LineItem> getLineItem() {

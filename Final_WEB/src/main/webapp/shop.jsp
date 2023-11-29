@@ -1,13 +1,8 @@
 <%@ page import="business.Product" %>
 <%@ page import="Data.ProductDB" %>
 <%@ page import="java.util.List" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %><%--
-  Created by IntelliJ IDEA.
-  User: COMPUTER
-  Date: 11/25/2023
-  Time: 12:32 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -188,11 +183,7 @@
                         </div>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-<%--                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>--%>
-                        <form class="cart-btn" action="cart" method="post">
-                            <input type="hidden" name="fruitID" value="${product.fruitID}">
-                            <input type="submit"  value="Add To Cart">
-                        </form>
+                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
                 </div>
             </c:forEach>

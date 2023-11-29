@@ -7,6 +7,7 @@ import java.util.Collection;
 @Entity
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     public String getId() {
@@ -50,7 +51,7 @@ public class Customer {
         this.address = address;
     }
 
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.EAGER, mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER, mappedBy = "customer")
     private Collection<Invoice> bill;
 
     public Collection<Invoice> getBill() {

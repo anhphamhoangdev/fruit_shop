@@ -22,7 +22,7 @@ public class CartServlet extends HttpServlet {
             action = "cart";
         }
         if (action.equals("shop")) {
-            url = "/index.jsp";
+            url = "/shop.jsp";
         }
         else if (action.equals("cart")) {
             String productCode = request.getParameter("fruitID");
@@ -48,6 +48,7 @@ public class CartServlet extends HttpServlet {
             LineItem lineItem = new LineItem();
             lineItem.setItem(product);
             lineItem.setQuantity(quantity);
+//            LineItemDB.insert(lineItem);
             if (quantity > 0) {
                 cart.addItem(lineItem, type);
             } else if (quantity == 0) {
@@ -56,9 +57,9 @@ public class CartServlet extends HttpServlet {
             session.setAttribute("cart", cart);
             url = "/cart.jsp";
         }
-//        else if (action.equals("checkout")) {
-//            url = "/checkout.jsp";
-//        }
+        else if (action.equals("checkout")) {
+            url = "/checkout.jsp";
+        }
         else if (action.equals("back")) {
             HttpSession session = request.getSession();
             // Xóa giỏ hàng hiện tại từ session

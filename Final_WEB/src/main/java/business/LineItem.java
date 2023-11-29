@@ -8,13 +8,14 @@ import business.*;
 @Entity
 public class LineItem {
     @Id
-    private String lineItemID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long lineItemID;
 
-    public String getLineItemID() {
+    public Long getLineItemID() {
         return lineItemID;
     }
 
-    public void setLineItemID(String lineItemID) {
+    public void setLineItemID(Long lineItemID) {
         this.lineItemID = lineItemID;
     }
 
@@ -29,7 +30,7 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false)
+    @OneToOne(optional = false)
     private Product item;
 
     public Product getItem() {

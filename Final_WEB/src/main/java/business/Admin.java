@@ -15,8 +15,8 @@ public class Admin {
         return adminID;
     }
 
-    public void setAdminID(String adminid) {
-        this.adminID = adminid;
+    public void setAdminID(String adminID) {
+        this.adminID = adminID;
     }
 
     @Basic
@@ -41,7 +41,7 @@ public class Admin {
         this.passwd = passwd;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany
     private Collection<business.Product> Product;
 
     public Collection<business.Product> getProduct() {

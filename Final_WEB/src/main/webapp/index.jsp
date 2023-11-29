@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ page import="business.Product" %>
+<%@ page import="Data.ProductDB" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +35,7 @@
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+
 </head>
 <body>
 <!--PreLoader-->
@@ -55,7 +59,7 @@
                         </a>
                     </div>
                     <!-- logo -->
-
+                    <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
@@ -96,12 +100,15 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <!-- Add the user login icon -->
+                                    <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>
                                 </div>
                             </li>
+
                         </ul>
                     </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                    <div class="mobile-menu"></div>
+<%--                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>--%>
+<%--                    <div class="mobile-menu"></div>--%>
                     <!-- menu end -->
                 </div>
             </div>
@@ -208,7 +215,10 @@
                 </div>
             </div>
         </div>
-
+        <%
+            List<Product> products = ProductDB.getAllProducts();
+            request.setAttribute("products", products);
+        %>
         <div class="row">
             <c:forEach var="product" items="${products}">
                 <div class="col-lg-4 col-md-6 text-center">

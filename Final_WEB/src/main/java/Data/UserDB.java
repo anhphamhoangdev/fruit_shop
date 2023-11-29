@@ -21,22 +21,6 @@ public class UserDB {
             em.close();
         }
     }
-
-    public static void update(Customer c) {
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-        trans.begin();
-        try {
-            em.merge(c);
-            trans.commit();
-        } catch (Exception e) {
-            System.out.println(e);
-            trans.rollback();
-        } finally {
-            em.close();
-        }
-    }
-
     public static Customer selectUser(String id) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         String qString = "SELECT c FROM Customer c " +
@@ -55,15 +39,20 @@ public class UserDB {
         return result;
     }
 
-    public static boolean emailExists(String email) {
+    public static void update(Customer c) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT COUNT(c) FROM Customer c " +
-                "WHERE c.Email = :email";
-        TypedQuery<Long> q = em.createQuery(qString, Long.class);
-        q.setParameter("email", email);
-        long count = q.getSingleResult();
-        em.close();
-
-        return count > 0;
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.merge(c);
+            trans.commit();
+        } catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }
     }
+
+
 }
