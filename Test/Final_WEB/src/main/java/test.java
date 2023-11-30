@@ -19,10 +19,11 @@ public class test {
 //        product.setDateInput(new Date());
 //        ProductDB.insert(product);
         Admin admin = new Admin();
-        admin.setAdminID("A001");
+        admin.setAdminID("ad01");
         admin.setUserName("admin");
-        admin.setPasswd("123");
+        admin.setPasswd("123456");
         AdminDB.insert(admin);
+
 
 //        LineItem lineItem = new LineItem();
 //        lineItem.setLineItemID("L001");
@@ -119,4 +120,4 @@ public class test {
 ////
 ////        }
 ////    }
-
+//}}

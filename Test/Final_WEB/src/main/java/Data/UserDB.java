@@ -1,7 +1,6 @@
 package Data;
 
 import business.Customer;
-import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -61,5 +60,6 @@ public class UserDB {
         TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c", Customer.class);
         return query.getResultList();
     }
+
 
 }

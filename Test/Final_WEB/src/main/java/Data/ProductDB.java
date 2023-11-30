@@ -23,6 +23,35 @@ public class ProductDB {
             em2.close();
         }
     }
+    public static void update(Product product){
+        EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction transaction = em2.getTransaction();
+        transaction.begin();
+        try {
+            em2.merge(product);
+            transaction.commit();
+        }catch (Exception a){
+            System.out.println(a);
+            transaction.rollback();
+        }finally {
+            em2.close();
+        }
+    }
+    public static void remove(Product product){
+        EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction transaction = em2.getTransaction();
+        transaction.begin();
+        try {
+            em2.remove(product);
+            transaction.commit();
+        }catch (Exception a){
+            System.out.println(a);
+            transaction.rollback();
+        }finally {
+            em2.close();
+        }
+    }
+
     public static List<Product> getAllProducts() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         TypedQuery<Product> query = em.createQuery("SELECT p FROM Product p", Product.class);
@@ -43,9 +72,6 @@ public class ProductDB {
         } finally {
             em.close();
         }
-
         return (Product)result;
-
     }
-
 }

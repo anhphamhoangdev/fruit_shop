@@ -115,13 +115,13 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <% %>
-                   <%Admin admin = AdminDB.selectadmin("A001"); %>
-          <%request.setAttribute("admin",admin); %>
-          <li>
-            <a class="profile-pic" href="#">
-              <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                   class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
-          </li>
+                    <%Admin admin = AdminDB.selectadmin("ad01"); %>
+                    <%request.setAttribute("admin",admin); %>
+                    <li>
+                        <a class="profile-pic" href="#">
+                            <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                 class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
+                    </li>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
@@ -171,49 +171,16 @@
                         </a>
                     </li>
 
-<%--                    <li class="sidebar-item">--%>
-<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"--%>
-<%--                           aria-expanded="false">--%>
-<%--                            <i class="fa fa-globe" aria-hidden="true"></i>--%>
-<%--                            <span class="hide-menu">Google Map</span>--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
-<%--                    <li class="sidebar-item">--%>
-<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.jsp"--%>
-<%--                           aria-expanded="false">--%>
-<%--                            <i class="fa fa-columns" aria-hidden="true"></i>--%>
-<%--                            <span class="hide-menu">Blank Page</span>--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
-<%--                    <li class="sidebar-item">--%>
-<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"--%>
-<%--                           aria-expanded="false">--%>
-<%--                            <i class="fa fa-info-circle" aria-hidden="true"></i>--%>
-<%--                            <span class="hide-menu">Error 404</span>--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
-<%--                    <li class="text-center p-20 upgrade-btn">--%>
-<%--                        <a href="https://www.wrappixel.com/templates/ampleadmin/"--%>
-<%--                           class="btn d-grid btn-danger text-white" target="_blank">--%>
-<%--                            Upgrade to Pro</a>--%>
-<%--                    </li>--%>
                 </ul>
 
             </nav>
-            <!-- End Sidebar navigation -->
+
         </div>
         <!-- End Sidebar scroll-->
     </aside>
-    <!-- ============================================================== -->
-    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
+
     <div class="page-wrapper">
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
+
         <div class="page-breadcrumb bg-white">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -234,12 +201,9 @@
         </div>
 
         <% List<Customer> customers = UserDB.getAllCustomer();
-        request.setAttribute("customer",customers);
+            request.setAttribute("customer",customers);
         %>
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="white-box">
@@ -258,14 +222,14 @@
                                 </thead>
                                 <tbody>
                                 <c:forEach var="customer" items="${customer}">
-                                <tr>
-<%--                                    <td></td>--%>
-                                    <td>${customer.id}</td>
-                                    <td>${customer.name}</td>
-                                    <td>${customer.email}</td>
-                                    <td>${customer.contact}</td>
-                                    <td>${customer.creditCard}</td>
-                                </tr>
+                                    <tr>
+                                            <%--                                    <td></td>--%>
+                                        <td>${customer.id}</td>
+                                        <td>${customer.name}</td>
+                                        <td>${customer.email}</td>
+                                        <td>${customer.contact}</td>
+                                        <td>${customer.creditCard}</td>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
@@ -273,40 +237,17 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
+
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
+
         <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
                 href="https://www.wrappixel.com/">wrappixel.com</a>
         </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
+
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
+
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="assets/bootstrapForAdmin/dist/js/bootstrap.bundle.min.js"></script>

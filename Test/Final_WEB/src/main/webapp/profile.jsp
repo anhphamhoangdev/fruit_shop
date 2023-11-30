@@ -3,13 +3,8 @@
 <%@ page import="business.Product" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ page import="Data.ProductDB" %><%--
-  Created by IntelliJ IDEA.
-  User: COMPUTER
-  Date: 11/29/2023
-  Time: 10:45 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="Data.ProductDB" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
@@ -30,9 +25,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
   <!-- Custom CSS -->
   <link href="assets/cssforadmin/style.min.css" rel="stylesheet">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
+
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
@@ -54,29 +47,21 @@
 </head>
 
 <body>
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
+<!-- ========================================================== -->
 <div class="preloader">
   <div class="lds-ripple">
     <div class="lds-pos"></div>
     <div class="lds-pos"></div>
   </div>
 </div>
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
+<!-- ======================================================== -->
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-  <!-- ============================================================== -->
-  <!-- Topbar header - style you can find in pages.scss -->
-  <!-- ============================================================== -->
+  <!-- ======================================================= -->
   <header class="topbar" data-navbarbg="skin5">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
       <div class="navbar-header" data-logobg="skin6">
-        <!-- ============================================================== -->
-        <!-- Logo -->
-        <!-- ============================================================== -->
+        <!-- ========================================================== -->
         <a class="navbar-brand" href="dashboard.html">
           <!-- Logo icon -->
           <b class="logo-icon">
@@ -90,12 +75,7 @@
                             <img src="plugins/images/logo-text.png" alt="homepage" />
                         </span>
         </a>
-        <!-- ============================================================== -->
-        <!-- End Logo -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- toggle and nav items -->
-        <!-- ============================================================== -->
+        <!-- ========================================================= -->
         <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
            href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
       </div>
@@ -109,14 +89,10 @@
                href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
           </li>
         </ul>
-        <!-- ============================================================== -->
-        <!-- Right side toggle and nav items -->
-        <!-- ============================================================== -->
+        <!-- ============================================================ -->
         <ul class="navbar-nav ms-auto d-flex align-items-center">
 
-          <!-- ============================================================== -->
-          <!-- Search -->
-          <!-- ============================================================== -->
+          <!-- ============================================================= -->
           <li class=" in">
             <form role="search" class="app-search d-none d-md-block me-3">
               <input type="text" placeholder="Search..." class="form-control mt-0">
@@ -126,8 +102,6 @@
             </form>
           </li>
           <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
           <%Admin admin = AdminDB.selectadmin("A001"); %>
           <%request.setAttribute("admin",admin); %>
           <li>
@@ -135,19 +109,12 @@
               <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
                    class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
           </li>
-          <!-- ============================================================== -->
-          <!-- User profile and search -->
-          <!-- ============================================================== -->
+          <!-- =========================================================== -->
         </ul>
       </div>
     </nav>
   </header>
-  <!-- ============================================================== -->
-  <!-- End Topbar header -->
-  <!-- ============================================================== -->
-  <!-- ============================================================== -->
-  <!-- Left Sidebar - style you can find in sidebar.scss  -->
-  <!-- ============================================================== -->
+  <!-- ============================================================ -->
   <aside class="left-sidebar" data-sidebarbg="skin6">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
@@ -173,7 +140,7 @@
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.jsp"
                aria-expanded="false">
               <i class="fa fa-table" aria-hidden="true"></i>
-              <span class="hide-menu">Basic Table</span>
+              <span class="hide-menu">Customer Table</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -184,22 +151,12 @@
             </a>
           </li>
         </ul>
-
       </nav>
-      <!-- End Sidebar navigation -->
     </div>
-    <!-- End Sidebar scroll-->
   </aside>
-  <!-- ============================================================== -->
-  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-  <!-- ============================================================== -->
-  <!-- ============================================================== -->
-  <!-- Page wrapper  -->
-  <!-- ============================================================== -->
+  <!-- ======================================================== -->
   <div class="page-wrapper">
-    <!-- ============================================================== -->
-    <!-- Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
+    <!-- ============================================================= -->
     <div class="page-breadcrumb bg-white">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -218,22 +175,9 @@
       </div>
       <!-- /.col-lg-12 -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Bread crumb and right sidebar toggle -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Container fluid  -->
-    <!-- ============================================================== -->
     <div class="container-fluid">
-      <!-- ============================================================== -->
-      <!-- Start Page Content -->
-      <!-- ============================================================== -->
-      <!-- Row -->
-      <div class="row">
-        <!-- Column -->
 
-        <!-- Column -->
-        <!-- Column -->
+      <div class="row">
         <div class="col-lg-8 col-xlg-9 col-md-12">
           <div class="card">
             <div class="card-body">
@@ -241,13 +185,12 @@
                 <div class="form-group mb-4">
                   <label class="col-md-12 p-0">Product Name</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="text" name="Name"
+                    <input type="text" name="NameProduct"
                            class="form-control p-0 border-0" value="${product.name}"> </div>
                 </div>
                 <div class="form-group mb-4">
                   <label for="example-email" class="col-md-12 p-0">Price</label>
                   <div class="col-md-12 border-bottom p-0">
-
                     <input type="text"
                            class="form-control p-0 border-0" name="Price"
                            value="${product.price}" id="example-email">
@@ -256,8 +199,7 @@
                 <div class="form-group mb-4">
                   <label class="col-md-12 p-0">exp</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="date" value="${product.exp}" class="form-control p-0 border-0" name="exp"
-                            >
+                    <input type="date" value="${product.exp}" class="form-control p-0 border-0" name="exp">
                   </div>
                 </div>
                 <div class="form-group mb-4">
@@ -283,24 +225,26 @@
                   <div class="col-sm-12 border-bottom">
                     <select class="form-select shadow-none p-0 border-0 form-control-line">
                       <c:forEach var="product" items="${product}">
-                      <option name="fr" type="text" value="${product.fruitID}" name="fruitID" >${product.fruitID}</option>
+                        <option name="fr" type="text" value="${product.fruitID}" name="fruitID" >${product.fruitID}</option>
                       </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="form-group mb-4">
                   <div class="col-sm-12">
-                    <form class="cart-btn" action="insert" method="post">
+                    <form class="cart-btn" action="insertProduct" method="post">
                       <input type="submit"  value="Insert Product">
 
-
                     </form>
-                    <form class="cart-btn" action="update" method="post">
+                    <br>
+
+                    <form class="cart-btn" action="updateProduct" method="post">
 
                       <input type="submit"  value="Update Product">
 
                     </form>
-                    <form class="cart-btn" action="remove" method="post">
+                    <br>
+                    <form class="cart-btn" action="removeProduct" method="post">
 
                       <input type="submit"  value="Remove Product">
                     </form>
@@ -311,43 +255,17 @@
             </div>
           </div>
         </div>
-        <!-- Column -->
       </div>
-      <!-- Row -->
-      <!-- ============================================================== -->
-      <!-- End PAge Content -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
-      <!-- Right sidebar -->
-      <!-- ============================================================== -->
-      <!-- .right-sidebar -->
-      <!-- ============================================================== -->
-      <!-- End Right sidebar -->
-      <!-- ============================================================== -->
+
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
     <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
             href="https://www.wrappixel.com/">wrappixel.com</a>
     </footer>
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+    <!---->
   </div>
-  <!-- ============================================================== -->
-  <!-- End Page wrapper  -->
-  <!-- ============================================================== -->
+  <!-- =============================== -->
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
+<!-- ================================= -->
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="assets/bootstrapForAdmin/dist/js/bootstrap.bundle.min.js"></script>

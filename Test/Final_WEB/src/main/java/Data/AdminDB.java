@@ -2,7 +2,6 @@ package Data;
 
 import business.Admin;
 import business.Customer;
-import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -12,19 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDB {
-    public static void insert(Admin admin){
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em.getTransaction();
-        trans.begin();
-        try {
-            em.persist(admin);
-            trans.commit();
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            trans.rollback();
-        } finally {
-            em.close();
+
+    public  static  void insert(Admin admin){
+        EntityManager entityManager = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        try{
+            entityManager.persist(admin);
+            transaction.commit();
+        }catch (Exception a){
+            System.out.println(a);
+            transaction.rollback();
+        }finally {
+            entityManager.close();
         }
     }
 

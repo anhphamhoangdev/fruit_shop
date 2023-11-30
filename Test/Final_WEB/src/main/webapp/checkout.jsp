@@ -165,9 +165,7 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                   <div class="billing-address-form">
-<%--                    <p><i>${message}</i></p>--%>
                     <form action="order" method="post" >
-<%--                      <input type="hidden" name="action" value="order">--%>
                       <p><input name="Name" type="text" placeholder="Name" value="${customer.name}"></p>
                       <p><input name="Email" type="email" placeholder="Email" value="${customer.Email}"></p>
                       <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" ></p>
@@ -176,7 +174,11 @@
                       <input type="submit" value="order">
                     </form>
                   </div>
+                  <form action="sendEmail" method="post" >
+                    <input type="submit" value="Email">
+                  </form>
                 </div>
+
               </div>
             </div>
 
