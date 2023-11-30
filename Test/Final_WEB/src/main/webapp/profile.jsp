@@ -1,4 +1,9 @@
-<%--
+<%@ page import="business.Admin" %>
+<%@ page import="Data.AdminDB" %>
+<%@ page import="business.Product" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ page import="Data.ProductDB" %><%--
   Created by IntelliJ IDEA.
   User: COMPUTER
   Date: 11/29/2023
@@ -24,13 +29,28 @@
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
   <!-- Custom CSS -->
-  <link href="css/style.min.css" rel="stylesheet">
+  <link href="assets/cssforadmin/style.min.css" rel="stylesheet">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="assets/css/owl.carousel.css">
+  <!-- magnific popup -->
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="assets/css/animate.css">
+  <!-- mean menu css -->
+  <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+  <!-- main style -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- responsive -->
+  <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 
 <body>
@@ -108,10 +128,12 @@
           <!-- ============================================================== -->
           <!-- User profile and search -->
           <!-- ============================================================== -->
+          <%Admin admin = AdminDB.selectadmin("A001"); %>
+          <%request.setAttribute("admin",admin); %>
           <li>
             <a class="profile-pic" href="#">
               <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                   class="img-circle"><span class="text-white font-medium">Steave</span></a>
+                   class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
           </li>
           <!-- ============================================================== -->
           <!-- User profile and search -->
@@ -141,51 +163,25 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.jsp"
                aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span class="hide-menu">Profile</span>
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.jsp"
                aria-expanded="false">
               <i class="fa fa-table" aria-hidden="true"></i>
               <span class="hide-menu">Basic Table</span>
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="productable.jsp"
                aria-expanded="false">
-              <i class="fa fa-font" aria-hidden="true"></i>
-              <span class="hide-menu">Icon</span>
+              <i class="fa fa-table" aria-hidden="true"></i>
+              <span class="hide-menu">Product Table</span>
             </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
-               aria-expanded="false">
-              <i class="fa fa-globe" aria-hidden="true"></i>
-              <span class="hide-menu">Google Map</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
-               aria-expanded="false">
-              <i class="fa fa-columns" aria-hidden="true"></i>
-              <span class="hide-menu">Blank Page</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
-               aria-expanded="false">
-              <i class="fa fa-info-circle" aria-hidden="true"></i>
-              <span class="hide-menu">Error 404</span>
-            </a>
-          </li>
-          <li class="text-center p-20 upgrade-btn">
-            <a href="https://www.wrappixel.com/templates/ampleadmin/"
-               class="btn d-grid btn-danger text-white" target="_blank">
-              Upgrade to Pro</a>
           </li>
         </ul>
 
@@ -235,31 +231,7 @@
       <!-- Row -->
       <div class="row">
         <!-- Column -->
-        <div class="col-lg-4 col-xlg-3 col-md-12">
-          <div class="white-box">
-            <div class="user-bg"> <img width="100%" alt="user" src="plugins/images/large/img1.jpg">
-              <div class="overlay-box">
-                <div class="user-content">
-                  <a href="javascript:void(0)"><img src="plugins/images/users/genu.jpg"
-                                                    class="thumb-lg img-circle" alt="img"></a>
-                  <h4 class="text-white mt-2">User Name</h4>
-                  <h5 class="text-white mt-2">info@myadmin.com</h5>
-                </div>
-              </div>
-            </div>
-            <div class="user-btm-box mt-5 d-md-flex">
-              <div class="col-md-4 col-sm-4 text-center">
-                <h1>258</h1>
-              </div>
-              <div class="col-md-4 col-sm-4 text-center">
-                <h1>125</h1>
-              </div>
-              <div class="col-md-4 col-sm-4 text-center">
-                <h1>556</h1>
-              </div>
-            </div>
-          </div>
-        </div>
+
         <!-- Column -->
         <!-- Column -->
         <div class="col-lg-8 col-xlg-9 col-md-12">
@@ -267,54 +239,72 @@
             <div class="card-body">
               <form class="form-horizontal form-material">
                 <div class="form-group mb-4">
-                  <label class="col-md-12 p-0">Full Name</label>
+                  <label class="col-md-12 p-0">Product Name</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="text" placeholder="Johnathan Doe"
-                           class="form-control p-0 border-0"> </div>
+                    <input type="text" name="Name"
+                           class="form-control p-0 border-0" value="${product.name}"> </div>
                 </div>
                 <div class="form-group mb-4">
-                  <label for="example-email" class="col-md-12 p-0">Email</label>
+                  <label for="example-email" class="col-md-12 p-0">Price</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="email" placeholder="johnathan@admin.com"
-                           class="form-control p-0 border-0" name="example-email"
-                           id="example-email">
+
+                    <input type="text"
+                           class="form-control p-0 border-0" name="Price"
+                           value="${product.price}" id="example-email">
                   </div>
                 </div>
                 <div class="form-group mb-4">
-                  <label class="col-md-12 p-0">Password</label>
+                  <label class="col-md-12 p-0">exp</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="password" value="password" class="form-control p-0 border-0">
+                    <input type="date" value="${product.exp}" class="form-control p-0 border-0" name="exp"
+                            >
                   </div>
                 </div>
                 <div class="form-group mb-4">
-                  <label class="col-md-12 p-0">Phone No</label>
+                  <label class="col-md-12 p-0">Date input</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="text" placeholder="123 456 7890"
+                    <input type="date" value="${product.dateinput}" name="DateInput"
                            class="form-control p-0 border-0">
                   </div>
                 </div>
                 <div class="form-group mb-4">
-                  <label class="col-md-12 p-0">Message</label>
+                  <label class="col-md-12 p-0">Origin</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <textarea rows="5" class="form-control p-0 border-0"></textarea>
+                    <input type="text" value="${product.origin}" name="Origin"
+                           class="form-control p-0 border-0">
                   </div>
                 </div>
                 <div class="form-group mb-4">
-                  <label class="col-sm-12">Select Country</label>
+                  <label class="col-sm-12">Select ProductID</label>
 
+                  <% List<Product> products = ProductDB.getAllProducts();
+                    request.setAttribute("product",products);
+                  %>
                   <div class="col-sm-12 border-bottom">
                     <select class="form-select shadow-none p-0 border-0 form-control-line">
-                      <option>London</option>
-                      <option>India</option>
-                      <option>Usa</option>
-                      <option>Canada</option>
-                      <option>Thailand</option>
+                      <c:forEach var="product" items="${product}">
+                      <option name="fr" type="text" value="${product.fruitID}" name="fruitID" >${product.fruitID}</option>
+                      </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="form-group mb-4">
                   <div class="col-sm-12">
-                    <button class="btn btn-success">Update Profile</button>
+                    <form class="cart-btn" action="insert" method="post">
+                      <input type="submit"  value="Insert Product">
+
+
+                    </form>
+                    <form class="cart-btn" action="update" method="post">
+
+                      <input type="submit"  value="Update Product">
+
+                    </form>
+                    <form class="cart-btn" action="remove" method="post">
+
+                      <input type="submit"  value="Remove Product">
+                    </form>
+
                   </div>
                 </div>
               </form>
@@ -360,14 +350,14 @@
 <!-- ============================================================== -->
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app-style-switcher.js"></script>
+<script src="assets/bootstrapForAdmin/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jsForAdmin/app-style-switcher.js"></script>
 <!--Wave Effects -->
-<script src="js/waves.js"></script>
+<script src="assets/jsForAdmin/waves.js"></script>
 <!--Menu sidebar -->
-<script src="js/sidebarmenu.js"></script>
+<script src="assets/jsForAdmin/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="js/custom.js"></script>
+<script src="assets/jsForAdmin/custom.js"></script>
 </body>
 
 </html>

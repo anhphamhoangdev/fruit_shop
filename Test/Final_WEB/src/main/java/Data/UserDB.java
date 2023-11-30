@@ -1,10 +1,13 @@
 package Data;
 
 import business.Customer;
+import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
+
+import java.util.List;
 
 public class UserDB {
     public static void insert(Customer c) {
@@ -53,6 +56,10 @@ public class UserDB {
             em.close();
         }
     }
-
+    public static List<Customer> getAllCustomer() {
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        TypedQuery<Customer> query = em.createQuery("SELECT c FROM Customer c", Customer.class);
+        return query.getResultList();
+    }
 
 }

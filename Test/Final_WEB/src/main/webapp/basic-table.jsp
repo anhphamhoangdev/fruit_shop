@@ -6,6 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ page import="business.Customer" %>
+<%@ page import="Data.UserDB" %>
+<%@page import="business.Admin" %>
+<%@ page import="java.util.List" %>
+<%@ page import="Data.AdminDB" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -24,7 +30,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="assets/cssforadmin/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -108,11 +114,14 @@
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
-                    <li>
-                        <a class="profile-pic" href="#">
-                            <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                 class="img-circle"><span class="text-white font-medium">Steave</span></a>
-                    </li>
+                    <% %>
+                   <%Admin admin = AdminDB.selectadmin("A001"); %>
+          <%request.setAttribute("admin",admin); %>
+          <li>
+            <a class="profile-pic" href="#">
+              <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                   class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
+          </li>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
@@ -141,52 +150,53 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.jsp"
                            aria-expanded="false">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <span class="hide-menu">Profile</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.jsp"
                            aria-expanded="false">
                             <i class="fa fa-table" aria-hidden="true"></i>
                             <span class="hide-menu">Basic Table</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="productable.jsp"
                            aria-expanded="false">
-                            <i class="fa fa-font" aria-hidden="true"></i>
-                            <span class="hide-menu">Icon</span>
+                            <i class="fa fa-table" aria-hidden="true"></i>
+                            <span class="hide-menu">Product Table</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
-                           aria-expanded="false">
-                            <i class="fa fa-globe" aria-hidden="true"></i>
-                            <span class="hide-menu">Google Map</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
-                           aria-expanded="false">
-                            <i class="fa fa-columns" aria-hidden="true"></i>
-                            <span class="hide-menu">Blank Page</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
-                           aria-expanded="false">
-                            <i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="hide-menu">Error 404</span>
-                        </a>
-                    </li>
-                    <li class="text-center p-20 upgrade-btn">
-                        <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                           class="btn d-grid btn-danger text-white" target="_blank">
-                            Upgrade to Pro</a>
-                    </li>
+
+<%--                    <li class="sidebar-item">--%>
+<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"--%>
+<%--                           aria-expanded="false">--%>
+<%--                            <i class="fa fa-globe" aria-hidden="true"></i>--%>
+<%--                            <span class="hide-menu">Google Map</span>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                    <li class="sidebar-item">--%>
+<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.jsp"--%>
+<%--                           aria-expanded="false">--%>
+<%--                            <i class="fa fa-columns" aria-hidden="true"></i>--%>
+<%--                            <span class="hide-menu">Blank Page</span>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                    <li class="sidebar-item">--%>
+<%--                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"--%>
+<%--                           aria-expanded="false">--%>
+<%--                            <i class="fa fa-info-circle" aria-hidden="true"></i>--%>
+<%--                            <span class="hide-menu">Error 404</span>--%>
+<%--                        </a>--%>
+<%--                    </li>--%>
+<%--                    <li class="text-center p-20 upgrade-btn">--%>
+<%--                        <a href="https://www.wrappixel.com/templates/ampleadmin/"--%>
+<%--                           class="btn d-grid btn-danger text-white" target="_blank">--%>
+<%--                            Upgrade to Pro</a>--%>
+<%--                    </li>--%>
                 </ul>
 
             </nav>
@@ -222,12 +232,10 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+
+        <% List<Customer> customers = UserDB.getAllCustomer();
+        request.setAttribute("customer",customers);
+        %>
         <div class="container-fluid">
             <!-- ============================================================== -->
             <!-- Start Page Content -->
@@ -241,56 +249,24 @@
                             <table class="table text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th class="border-top-0">#</th>
-                                    <th class="border-top-0">First Name</th>
-                                    <th class="border-top-0">Last Name</th>
-                                    <th class="border-top-0">Username</th>
-                                    <th class="border-top-0">Role</th>
+                                    <th class="border-top-0">id</th>
+                                    <th class="border-top-0">Name</th>
+                                    <th class="border-top-0">email</th>
+                                    <th class="border-top-0">contact</th>
+                                    <th class="border-top-0">creditCard</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <c:forEach var="customer" items="${customer}">
                                 <tr>
-                                    <td>1</td>
-                                    <td>Deshmukh</td>
-                                    <td>Prohaska</td>
-                                    <td>@Genelia</td>
-                                    <td>admin</td>
+<%--                                    <td></td>--%>
+                                    <td>${customer.id}</td>
+                                    <td>${customer.name}</td>
+                                    <td>${customer.email}</td>
+                                    <td>${customer.contact}</td>
+                                    <td>${customer.creditCard}</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Deshmukh</td>
-                                    <td>Gaylord</td>
-                                    <td>@Ritesh</td>
-                                    <td>member</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sanghani</td>
-                                    <td>Gusikowski</td>
-                                    <td>@Govinda</td>
-                                    <td>developer</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Roshan</td>
-                                    <td>Rogahn</td>
-                                    <td>@Hritik</td>
-                                    <td>supporter</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Joshi</td>
-                                    <td>Hickle</td>
-                                    <td>@Maruti</td>
-                                    <td>member</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Nigam</td>
-                                    <td>Eichmann</td>
-                                    <td>@Sonu</td>
-                                    <td>supporter</td>
-                                </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -333,14 +309,14 @@
 <!-- ============================================================== -->
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/app-style-switcher.js"></script>
+<script src="assets/bootstrapForAdmin/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jsForAdmin/app-style-switcher.js"></script>
 <!--Wave Effects -->
-<script src="js/waves.js"></script>
+<script src="assets/jsForAdmin/waves.js"></script>
 <!--Menu sidebar -->
-<script src="js/sidebarmenu.js"></script>
+<script src="assets/jsForAdmin/sidebarmenu.js"></script>
 <!--Custom JavaScript -->
-<script src="js/custom.js"></script>
+<script src="assets/jsForAdmin/custom.js"></script>
 </body>
 
 </html>

@@ -2,6 +2,7 @@ package Data;
 
 import business.Admin;
 import business.Customer;
+import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
@@ -42,5 +43,22 @@ public class AdminDB {
 
         return null;
 
+    }
+    public static Admin selectadmin( String adminID){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        String qString = "SELECT a FROM Admin a " +
+                "WHERE a.adminID = :adminID";
+        TypedQuery<Admin> q = em.createQuery(qString, Admin.class);
+        q.setParameter("adminID", adminID);
+        Admin result = null;
+        try {
+            result = q.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        } finally {
+            em.close();
+        }
+
+        return (Admin) result;
     }
 }

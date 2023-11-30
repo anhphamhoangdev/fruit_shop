@@ -183,7 +183,10 @@
                         </div>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        <form class="cart-btn" action="cart" method="post">
+                            <input type="hidden" name="fruitID" value="${product.fruitID}">
+                            <input type="submit"  value="Add To Cart">
+                        </form>
                     </div>
                 </div>
             </c:forEach>
