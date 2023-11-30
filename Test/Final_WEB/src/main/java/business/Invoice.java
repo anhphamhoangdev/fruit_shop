@@ -9,13 +9,13 @@ import java.util.Date;
 public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String invoiceID;
+    private Long invoiceID;
 
-    public String getInvoiceID() {
+    public Long getInvoiceID() {
         return invoiceID;
     }
 
-    public void setInvoiceID(String invoiceID) {
+    public void setInvoiceID(Long invoiceID) {
         this.invoiceID = invoiceID;
     }
 
@@ -50,5 +50,16 @@ public class Invoice {
 
     public void setLineItem(Collection<LineItem> lineItem) {
         this.lineItem = lineItem;
+    }
+
+    @Basic
+    private Double totalBill;
+
+    public Double getTotalBill() {
+        return totalBill;
+    }
+
+    public void setTotalBill(Double totalBill) {
+        this.totalBill = totalBill;
     }
 }

@@ -30,7 +30,7 @@ public class LoginServlet extends HttpServlet {
             if (adminDB.login(username,pass) != null){
 
                 session.setAttribute("admin",adminDB.login(username,pass));
-                url ="/admin.jsp";
+                url ="/basic-table.jsp";
 
             }
             else {

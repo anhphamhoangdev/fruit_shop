@@ -15,14 +15,14 @@ public class CartServlet extends HttpServlet {
                           HttpServletResponse response)
             throws ServletException, IOException {
 
-        String url = "/login.jsp";
+        String url = "/index.jsp";
         ServletContext sc = getServletContext();
         String action = request.getParameter("action");
         if (action == null) {
             action = "cart";
         }
         if (action.equals("shop")) {
-            url = "/index.jsp";
+            url = "/shop.jsp";
         }
         else if (action.equals("cart")) {
             String productCode = request.getParameter("fruitID");
@@ -46,19 +46,18 @@ public class CartServlet extends HttpServlet {
 
             Product product = ProductDB.selectProduct(productCode);
             LineItem lineItem = new LineItem();
-            lineItem.setLineItemID("L0090");
             lineItem.setItem(product);
             lineItem.setQuantity(quantity);
+//            LineItemDB.insert(lineItem);
             if (quantity > 0) {
                 cart.addItem(lineItem, type);
             } else if (quantity == 0) {
                 cart.removeItem(lineItem);
             }
-
             session.setAttribute("cart", cart);
             url = "/cart.jsp";
         }
-        else if (action.equals("checkou")) {
+        else if (action.equals("checkout")) {
             url = "/checkout.jsp";
         }
         else if (action.equals("back")) {

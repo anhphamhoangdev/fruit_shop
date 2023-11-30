@@ -3,6 +3,7 @@ package Data;
 import business.Admin;
 import business.Customer;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 
@@ -10,6 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminDB {
+    public static void insert(Admin admin){
+        EntityManager em = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction trans = em.getTransaction();
+        trans.begin();
+        try {
+            em.persist(admin);
+            trans.commit();
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            trans.rollback();
+        } finally {
+            em.close();
+        }
+    }
 
     public Admin login(String username, String passwd){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();

@@ -167,13 +167,13 @@
                   <div class="billing-address-form">
 <%--                    <p><i>${message}</i></p>--%>
                     <form action="order" method="post" >
-                      <input type="hidden" name="action" value="add">
-                      <input name="Name" type="text" placeholder="Name" value="${customer.name}">
-                      <input name="Email" type="email" placeholder="Email" value="${customer.Email}">
-                      <input name="Address" type="text" placeholder="Address" value="${customer.address}" >
-                      <input name="Phone" type="tel" placeholder="Phone" value="${customer.name}"></p>
-                      <textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea>
-                      <input type="submit" name="sub">
+<%--                      <input type="hidden" name="action" value="order">--%>
+                      <p><input name="Name" type="text" placeholder="Name" value="${customer.name}"></p>
+                      <p><input name="Email" type="email" placeholder="Email" value="${customer.Email}"></p>
+                      <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" ></p>
+                      <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}"></p>
+                      <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
+                      <input type="submit" value="order">
                     </form>
                   </div>
                 </div>
@@ -256,10 +256,10 @@
             </tbody>
           </table>
 <%--          <a href="#" class="boxed-btn">Place Order</a>--%>
-          <form class="boxed-btn" action="order" method="post">
-<%--            <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
-            <input type="submit"  value="Place Order">
-          </form>
+<%--          <form class="boxed-btn" action="order" method="post">--%>
+<%--&lt;%&ndash;            <input type="hidden" name="fruitID" value="${product.fruitID}">&ndash;%&gt;--%>
+<%--            <input type="submit"  value="Place Order">--%>
+<%--          </form>--%>
         </div>
       </div>
     </div>

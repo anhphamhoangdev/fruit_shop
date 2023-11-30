@@ -41,7 +41,7 @@ public class Admin {
         this.passwd = passwd;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany
     private Collection<business.Product> Product;
 
     public Collection<business.Product> getProduct() {

@@ -8,27 +8,32 @@ import java.util.*;
 public class test {
     public static void main(String[] args) throws ParseException {
 
-        Product product = ProductDB.selectProduct("F001");
-//        Product product1 = new Product();
-//        product1.setFruitID("F0012");
-//        product1.setDescription("A juicy, citrus orange");
-//        product1.setOrigin("Florida, USA");
-//        product1.setPrice(3);
+//        Product product = new Product();
+//        product.setName("Strawberry");
+//        product.setFruitID("S002");
+//        product.setDescription("A juicy, citrus orange");
+//        product.setOrigin("Florida, USA");
+//        product.setPrice(10);
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        product1.setExp(dateFormat.parse("2023-12-15"));
-//        product1.setDateInput(new Date());
-//        ProductDB.insert(product1);
+//        product.setExp(dateFormat.parse("2023-12-15"));
+//        product.setDateInput(new Date());
+//        ProductDB.insert(product);
+        Admin admin = new Admin();
+        admin.setAdminID("A001");
+        admin.setUserName("admin");
+        admin.setPasswd("123");
+        AdminDB.insert(admin);
 
-        LineItem lineItem = new LineItem();
-        lineItem.setLineItemID("L006");
-        lineItem.setQuantity(4);
-        lineItem.setItem(product);
-        LineItemDB.insert(lineItem);
-//
+//        LineItem lineItem = new LineItem();
+//        lineItem.setLineItemID("L001");
+//        lineItem.setQuantity(4);
+//        lineItem.setItem(ProductDB.selectProduct("m005"));
+//        LineItemDB.insert(lineItem);
+
 //        Product product1 = new Product();
-////        String id = product1.getFruitID();
-////        product1.setFruitID(id);
-//        product1.setFruitID("102");
+//        String id = product1.getFruitID();
+//        product1.setFruitID(id);
+//        product1.setFruitID("m328");
 //        product1.setDescription("A citrus Strawberry");
 //        product1.setOrigin("Flor");
 //        product1.setPrice(7);
@@ -37,9 +42,37 @@ public class test {
 //        product1.setExp(dateFormat1.parse("2023-12-15"));
 //        product1.setDateInput(new Date());
 //        ProductDB.insert(product1);
-//
-//        Cart car
-//
+
+
+//        LineItem lineItem1 = new LineItem();
+//        lineItem1.setLineItemID("L006");
+//        lineItem1.setQuantity(12);
+//        lineItem1.setItem(product1);
+//        LineItemDB.insert(lineItem1);
+
+//         Cart cart = new Cart();
+//         cart.addItem(lineItem, "true");
+//        cart.addItem(lineItem1, "false");
+
+//        Customer newCustomer = new Customer();
+//        newCustomer.setId("C0012");
+//        newCustomer.setName("John Doe");
+//        newCustomer.setEmail("john.doe@example.com");
+//        newCustomer.setAddress("123 Main St");
+//        newCustomer.setCreditCardType("Visa");
+//        UserDB.insert(newCustomer);
+
+//        Invoice invoice = new Invoice();
+//        invoice.setInvoiceID("INV0001");
+//        invoice.setLineItem(cart.getItems());
+//        invoice.setCustomer(UserDB.selectUser("C0012"));
+//        InvoiceDB.insert(invoice);
+//        for (LineItem item : invoice.getLineItem()) {
+//            System.out.println("LineItem ID: " + item.getItem());
+//        }
+//        cart.getItems().stream().map(item -> "LineItem ID: " + item.getItem()).forEach(System.out::println);
+    }
+}
 ////        Product product = new Product();
 ////        product.setFruitID("apple123");
 ////        product.setDescription("Juicy and sweet apple");
@@ -56,14 +89,7 @@ public class test {
 ////        lineItem1.setProduct(product1);
 ////       LineItemDB.insert(lineItem1);//
 //
-////        Customer newCustomer = new Customer();
-////        newCustomer.setId("C001");
-////        newCustomer.setName("John Doe");
-//////        newCustomer.setEmail("john.doe@example.com");
-////        newCustomer.setAddress("123 Main St");
-//////        newCustomer.setCreditCardType("Visa");
-//////        newCustomer.setCreditCardNumber("1234-5678-9012-3456");
-////        UserDB.insert(newCustomer);
+//
 //
 ////        Customer newCustomer = new Customer();
 ////        newCustomer = UserDB.selectUser("C001");
@@ -93,4 +119,4 @@ public class test {
 ////
 ////        }
 ////    }
-}}
+

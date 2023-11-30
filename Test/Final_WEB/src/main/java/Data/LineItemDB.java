@@ -19,6 +19,4 @@ public class LineItemDB {
             em3.close();
         }
     }
-
-
 }

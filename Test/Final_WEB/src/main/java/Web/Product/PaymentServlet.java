@@ -32,7 +32,7 @@ public class PaymentServlet extends HttpServlet {
         if (action.equals("shop")){
             url ="/shop.jsp";
         }
-        else if (action.equals("add")){
+        else if (action.equals("order")){
             String name = request.getParameter("Name");
             String email = request.getParameter("Email");
             String address = request.getParameter("Address");
@@ -54,7 +54,7 @@ public class PaymentServlet extends HttpServlet {
             invoice.setLineItem(cart.getItems());
             InvoiceDB.insert(invoice);
 
-            System.out.println("CusID: " + invoice.getCustomer().getId());
+//            System.out.println("CusID: " + invoice.getCustomer().getId());
 //            System.out.println("Quantity: " + Item1.getQuantity());
 
         }
