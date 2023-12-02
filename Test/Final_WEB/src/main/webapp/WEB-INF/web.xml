@@ -21,12 +21,12 @@
 
     <servlet-mapping>
         <servlet-name>productServlet</servlet-name>
-        <url-pattern>/loadProducts</url-pattern>
+        <url-pattern>/controllProduct</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>productServlet</servlet-name>
-        <url-pattern>/insertProduct</url-pattern>
+        <url-pattern>/insert</url-pattern>
     </servlet-mapping>
 
 

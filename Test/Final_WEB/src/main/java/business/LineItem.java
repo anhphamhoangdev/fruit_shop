@@ -30,7 +30,7 @@ public class LineItem {
         this.quantity = quantity;
     }
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = true)
     private Product item;
 
     public Product getItem() {

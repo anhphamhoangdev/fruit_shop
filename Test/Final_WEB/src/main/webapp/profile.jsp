@@ -62,7 +62,7 @@
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
       <div class="navbar-header" data-logobg="skin6">
         <!-- ========================================================== -->
-        <a class="navbar-brand" href="dashboard.html">
+        <a class="navbar-brand" href="dashboard.jsp">
           <!-- Logo icon -->
           <b class="logo-icon">
             <!-- Dark Logo icon -->
@@ -123,7 +123,7 @@
         <ul id="sidebarnav">
           <!-- User Profile-->
           <li class="sidebar-item pt-2">
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.jsp"
                aria-expanded="false">
               <i class="far fa-clock" aria-hidden="true"></i>
               <span class="hide-menu">Dashboard</span>
@@ -181,7 +181,7 @@
         <div class="col-lg-8 col-xlg-9 col-md-12">
           <div class="card">
             <div class="card-body">
-              <form class="form-horizontal form-material">
+              <form class="form-horizontal form-material" action="controllProduct" method="post">
                 <div class="form-group mb-4">
                   <label class="col-md-12 p-0">Product Name</label>
                   <div class="col-md-12 border-bottom p-0">
@@ -191,9 +191,9 @@
                 <div class="form-group mb-4">
                   <label for="example-email" class="col-md-12 p-0">Price</label>
                   <div class="col-md-12 border-bottom p-0">
-                    <input type="text"
+                    <input type="number"
                            class="form-control p-0 border-0" name="Price"
-                           value="${product.price}" id="example-email">
+                           value="${product.price}" id="example-email" min="1">
                   </div>
                 </div>
                 <div class="form-group mb-4">
@@ -217,38 +217,32 @@
                   </div>
                 </div>
                 <div class="form-group mb-4">
+                  <label class="col-md-12 p-0">Decription</label>
+                  <div class="col-md-12 border-bottom p-0">
+                    <input type="text" value="${product.decription}" name="Decription"
+                           class="form-control p-0 border-0">
+                  </div>
+                </div>
+                <div class="form-group mb-4">
                   <label class="col-sm-12">Select ProductID</label>
 
                   <% List<Product> products = ProductDB.getAllProducts();
                     request.setAttribute("product",products);
                   %>
                   <div class="col-sm-12 border-bottom">
-                    <select class="form-select shadow-none p-0 border-0 form-control-line">
+                    <select class="form-select shadow-none p-0 border-0 form-control-line" name="fruitID">
                       <c:forEach var="product" items="${product}">
-                        <option name="fr" type="text" value="${product.fruitID}" name="fruitID" >${product.fruitID}</option>
+                        <option type="text" value="${product.fruitID}"  >${product.fruitID}</option>
+<%--                        <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
                       </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="form-group mb-4">
                   <div class="col-sm-12">
-                    <form class="cart-btn" action="insertProduct" method="post">
-                      <input type="submit"  value="Insert Product">
-
-                    </form>
-                    <br>
-
-                    <form class="cart-btn" action="updateProduct" method="post">
-
-                      <input type="submit"  value="Update Product">
-
-                    </form>
-                    <br>
-                    <form class="cart-btn" action="removeProduct" method="post">
-
-                      <input type="submit"  value="Remove Product">
-                    </form>
-
+                      <button class="btn btn-success" type="submit" name="insert">Insert product</button>
+                      <button class="btn btn-success" type="submit" name="update">Update product</button>
+<%--                      <button class="btn btn-success" type="submit" name="remove">Remove product</button>--%>
                   </div>
                 </div>
               </form>

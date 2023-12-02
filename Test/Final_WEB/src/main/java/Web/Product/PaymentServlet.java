@@ -16,6 +16,7 @@ import org.eclipse.tags.shaded.org.apache.bcel.classfile.ConstantUtf8;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 //@WebServlet("order")
@@ -52,10 +53,13 @@ public class PaymentServlet extends HttpServlet {
             invoice.setInvoiceID(invoice.getInvoiceID());
             invoice.setCustomer(customer);
             invoice.setLineItem(cart.getItems());
+            invoice.setDate(new Date());
+            invoice.setTotal(cart.totalBillWithoutShip()+ cart.Shipping());
             InvoiceDB.insert(invoice);
 
 //            System.out.println("CusID: " + invoice.getCustomer().getId());
 //            System.out.println("Quantity: " + Item1.getQuantity());
+
 
         }
         servletContext.getRequestDispatcher(url)

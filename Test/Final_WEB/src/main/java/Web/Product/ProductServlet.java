@@ -17,42 +17,73 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        String insert = req.getParameter("insert");
+        String update = req.getParameter("update");
+
         ServletContext servletContext = req.getServletContext();
         HttpSession session = req.getSession();
-        String url ="/dashboard.jsp";
+        String url ="/index.jsp";
         if (action == null){
-            action = "insertProduct";
+            action = "controllProduct";
         }
-        if (action.equals("insertProduct")){
-            String name = req.getParameter("NameProduct");
-            String price = req.getParameter("Price");
-            int priceProduct = Integer.parseInt(price);
-            String dateString = req.getParameter("exp");
-            Date exp = null;
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                exp = dateFormat.parse(dateString);
-            } catch (ParseException e) {
-                e.printStackTrace(); // Handle the parse exception appropriately
-            }
-            String dateInput = req.getParameter("DateInput");
-            Date date = null;
-            try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                date = dateFormat.parse(dateInput);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        if (action.equals("controllProduct")){
+            url = "/productable.jsp";
+            if(insert != null) {
+                String name = req.getParameter("NameProduct");
+                String price = req.getParameter("Price");
+                int priceProduct = Integer.parseInt(price);
+                String dateString = req.getParameter("exp");
+                String Description = req.getParameter("Description");
+                Date exp = null;
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    exp = dateFormat.parse(dateString);
+                } catch (ParseException e) {
+                    e.printStackTrace(); // Handle the parse exception appropriately
+                }
+                String dateInput = req.getParameter("DateInput");
+                Date date = null;
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    date = dateFormat.parse(dateInput);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-            String origin = req.getParameter("Origin");
+                String origin = req.getParameter("Origin");
 
-            Product product = new Product();
-            product.setName(name);
-            product.setPrice(priceProduct);
-            product.setExp(exp);
-            product.setDateInput(date);
+
 //            product.setDescription();
-            ProductDB.insert(product);
+                ProductDB.insert(name,origin,priceProduct,exp,date,Description);
+            }
+             else if (update != null) {
+                String name = req.getParameter("NameProduct");
+                String price = req.getParameter("Price");
+                int priceProduct = Integer.parseInt(price);
+                String dateString = req.getParameter("exp");
+                String Description = req.getParameter("Description");
+                String fruitID = req.getParameter("fruitID");
+                Date exp = null;
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    exp = dateFormat.parse(dateString);
+                } catch (ParseException e) {
+                    e.printStackTrace(); // Handle the parse exception appropriately
+                }
+                String dateInput = req.getParameter("DateInput");
+                Date date = null;
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    date = dateFormat.parse(dateInput);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                String origin = req.getParameter("Origin");
+                ProductDB.Update(fruitID,name,origin,Description,priceProduct,exp,date);
+
+            }
+
 
         }
 //        else if (action.equals("checkout")) {

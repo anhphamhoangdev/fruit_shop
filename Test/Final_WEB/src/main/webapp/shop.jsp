@@ -2,6 +2,7 @@
 <%@ page import="Data.ProductDB" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -149,7 +150,10 @@
     </div>
 </div>
 <!-- end breadcrumb section -->
-
+<%
+    List<Product> products = ProductDB.getAllProducts();
+    request.setAttribute("products", products);
+%>
 <!-- products -->
 <div class="product-section mt-150 mb-150">
     <div class="container">
@@ -159,20 +163,19 @@
                 <div class="product-filters">
                     <ul>
                         <li class="active" data-filter="*">All</li>
-                        <li data-filter=".strawberry">Strawberry</li>
-                        <li data-filter=".berry">Berry</li>
-                        <li data-filter=".lemon">Lemon</li>
+                        <c:forEach var="product" items="${products}">
+                            <c:set var="className" value="${fn:replace(product.name, ' ', '-')}" />
+                            <li data-filter=".${className}">${product.name}</li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
         </div>
-        <%
-            List<Product> products = ProductDB.getAllProducts();
-            request.setAttribute("products", products);
-        %>
+
         <div class="row product-lists">
             <c:forEach var="product" items="${products}">
-                <div class="col-lg-4 col-md-6 text-center">
+                <c:set var="className" value="${fn:replace(product.name, ' ', '-')}" />
+                <div class="col-lg-4 col-md-6 text-center ${className}">
                     <div class="single-product-item">
                         <div class="product-image">
                             <!-- Assuming you have an image URL property in your 'product' object -->
@@ -182,7 +185,10 @@
                         </div>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        <form class="cart-btn" action="cart" method="post">
+                            <input type="hidden" name="fruitID" value="${product.fruitID}">
+                            <input type="submit"  value="Add To Cart">
+                        </form>
                     </div>
                 </div>
             </c:forEach>

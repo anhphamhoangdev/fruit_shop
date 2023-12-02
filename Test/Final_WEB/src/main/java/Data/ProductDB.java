@@ -1,22 +1,33 @@
 package Data;
 
 import business.Product;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
+import java.util.Date;
 import java.util.List;
 
 public class ProductDB {
-    public static void insert(Product product) {
-        EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
-        EntityTransaction trans = em2.getTransaction();
-        trans.begin();
-        try {
-            em2.persist(product);
-            trans.commit();
-        } catch (Exception e) {
+    public static void insert(String name, String origin, Integer price, Date exp, Date input, String decription) {
+        Product product = new Product();
+        product.setName(name);
+        product.setOrigin(origin);
+        product.setPrice(price);
+        product.setExp(exp);
+        product.setDateInput(input);
+        product.setDescription(decription);
+            EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
+            EntityTransaction trans = em2.getTransaction();
+            trans.begin();
+            try {
+                Query query =em2.createQuery("select p from Product p ORDER BY p.fruitID DESC");
+                query.setMaxResults(1);
+                Product lastProduct = (Product) query.getSingleResult();
+                int index= lastProduct != null ? Integer.parseInt(lastProduct.getFruitID().substring(1))+1:1;
+                String FruitID= "F" + String.format("%03d",index);
+                product.setFruitID(FruitID);
+                em2.persist(product);
+                trans.commit();
+            } catch (Exception e) {
             System.out.println(e);
             trans.rollback();
         } finally {
@@ -37,9 +48,10 @@ public class ProductDB {
             em2.close();
         }
     }
-    public static void remove(Product product){
+    public static void remove(String fruitID){
         EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction transaction = em2.getTransaction();
+        Product product = ProductDB.selectProduct(fruitID);
         transaction.begin();
         try {
             em2.remove(product);
@@ -73,5 +85,43 @@ public class ProductDB {
             em.close();
         }
         return (Product)result;
+    }
+    public static void Update(String fruitID, String name, String origin, String description, int price, Date exp, Date dateinput){
+        EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
+        EntityTransaction transaction = em2.getTransaction();
+        Product product = ProductDB.selectProduct(fruitID);
+
+        if(name == null){
+            name = product.getName();
+        }
+        if(origin== null){
+            origin= product.getOrigin();
+        }
+        if(description== null){
+            description = product.getDescription();
+        }
+        if(exp ==null ){
+            exp = product.getExp();
+        }
+        if(dateinput == null){
+            dateinput =product.getDateInput();
+        }
+        transaction.begin();
+        product.setName(name);
+        product.setExp(exp);
+        product.setPrice(price);
+        product.setDescription(description);
+        product.setDateInput(dateinput);
+        product.setOrigin(origin);
+        try {
+            em2.merge(product);
+            transaction.commit();
+        }
+        catch (Exception a){
+            System.out.println(a);
+            transaction.rollback();
+        }finally {
+            em2.close();
+        }
     }
 }
