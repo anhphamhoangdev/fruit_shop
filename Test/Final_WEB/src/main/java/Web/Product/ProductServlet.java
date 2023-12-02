@@ -59,9 +59,17 @@ public class ProductServlet extends HttpServlet {
              else if (update != null) {
                 String name = req.getParameter("NameProduct");
                 String price = req.getParameter("Price");
-                int priceProduct = Integer.parseInt(price);
+
+                int priceProduct ;
+                if(price.equals("")){
+                    priceProduct=0;
+                }
+                else{
+                     priceProduct = Integer.parseInt(price);
+                }
                 String dateString = req.getParameter("exp");
                 String Description = req.getParameter("Description");
+                String origin = req.getParameter("Origin");
                 String fruitID = req.getParameter("fruitID");
                 Date exp = null;
                 try {
@@ -79,7 +87,7 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
 
-                String origin = req.getParameter("Origin");
+
                 ProductDB.Update(fruitID,name,origin,Description,priceProduct,exp,date);
 
             }

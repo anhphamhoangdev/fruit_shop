@@ -23,6 +23,10 @@
         <servlet-name>productServlet</servlet-name>
         <url-pattern>/controllProduct</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>productServlet</servlet-name>
+        <url-pattern>/singleProduct</url-pattern>
+    </servlet-mapping>
     
     <servlet-mapping>
         <servlet-name>productServlet</servlet-name>

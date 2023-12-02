@@ -98,7 +98,7 @@
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
+                                    <li><a href="single-product.jsp">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
@@ -276,6 +276,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
 <!-- end cart -->
 
 <!-- logo carousel -->

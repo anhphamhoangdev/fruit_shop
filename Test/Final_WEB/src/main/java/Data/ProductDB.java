@@ -90,14 +90,16 @@ public class ProductDB {
         EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction transaction = em2.getTransaction();
         Product product = ProductDB.selectProduct(fruitID);
-
-        if(name == null){
+        if(price==0){
+            price=product.getPrice();
+        }
+        if(name.equals("")){
             name = product.getName();
         }
-        if(origin== null){
+        if( origin.equals("")){
             origin= product.getOrigin();
         }
-        if(description== null){
+        if(description.equals("")){
             description = product.getDescription();
         }
         if(exp ==null ){

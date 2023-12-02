@@ -225,8 +225,8 @@
                     <div class="single-product-item">
                         <div class="product-image">
                             <!-- Assuming you have an image URL property in your 'product' object -->
-                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
-<%--                                <a href="single-product.html"></a>--%>
+                            <a href="single-product.jsp?fruitID=${product.fruitID}"><img src="./assets/img/products/product-img.jpg" alt=""></a>
+<%--                                <a href="single-product.jsp"></a>--%>
 
                         </div>
                         <h3>${product.name}</h3>

@@ -56,8 +56,13 @@ public class CartServlet extends HttpServlet {
             }
             session.setAttribute("cart", cart);
             url = "/cart.jsp";
-        }
-        else if (action.equals("checkout")) {
+        } else if (action.equals("singleProduct")){
+            url = "/single-product.jsp";
+            HttpSession session = request.getSession();
+            String productCode = request.getParameter("fruitID");
+            Product product = ProductDB.selectProduct(productCode);
+            product = (Product) session.getAttribute("product");
+        } else if (action.equals("checkout")) {
             url = "/checkout.jsp";
         }
         else if (action.equals("back")) {

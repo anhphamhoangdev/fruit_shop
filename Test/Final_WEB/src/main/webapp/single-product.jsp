@@ -1,3 +1,7 @@
+<%@ page import="business.Product" %>
+<%@ page import="Data.ProductDB" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
 	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
 	<!-- title -->
-	<title>Cart</title>
+	<title>Single Product</title>
 
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
@@ -70,8 +74,8 @@
 									<ul class="sub-menu">
 										<li><a href="404.html">404 page</a></li>
 										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="cart.jsp">Cart</a></li>
+										<li><a href="checkout.jsp">Check Out</a></li>
 										<li><a href="contact.html">Contact</a></li>
 										<li><a href="news.html">News</a></li>
 										<li><a href="shop.jsp">Shop</a></li>
@@ -87,14 +91,14 @@
 								<li><a href="shop.jsp">Shop</a>
 									<ul class="sub-menu">
 										<li><a href="shop.jsp">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="checkout.jsp">Check Out</a></li>
 										<li><a href="single-product.jsp">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
+										<li><a href="cart.jsp">Cart</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>
@@ -135,136 +139,95 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Cart</h1>
+						<p>See more Details</p>
+						<h1>Single Product</h1>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- end breadcrumb section -->
+<% String fruitID = request.getParameter("fruitID");
+	Product product = ProductDB.selectProduct(fruitID);
+%>
 
-	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
+	<!-- single product -->
+	<div class="single-product mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-12">
-					<div class="cart-table-wrap">
-<!--						<table class="cart-table">-->
-<!--							<thead class="cart-table-head">-->
-<!--								<tr class="table-head-row">-->
-<!--									<th class="product-remove"></th>-->
-<!--									<th class="product-image">Product Image</th>-->
-<!--									<th class="product-name">Name</th>-->
-<!--									<th class="product-price">Price</th>-->
-<!--									<th class="product-quantity">Quantity</th>-->
-<!--									<th class="product-total">Total</th>-->
-<!--								</tr>-->
-<!--							</thead>-->
-<!--							<tbody>-->
-<!--								<tr class="table-body-row">-->
-<!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-<!--									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>-->
-<!--									<td class="product-name">Strawberry</td>-->
-<!--									<td class="product-price">$85</td>-->
-<!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-<!--									<td class="product-total">1</td>-->
-<!--								</tr>-->
-<!--								<tr class="table-body-row">-->
-<!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-<!--									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>-->
-<!--									<td class="product-name">Berry</td>-->
-<!--									<td class="product-price">$70</td>-->
-<!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-<!--									<td class="product-total">1</td>-->
-<!--								</tr>-->
-<!--								<tr class="table-body-row">-->
-<!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-<!--									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>-->
-<!--									<td class="product-name">Lemon</td>-->
-<!--									<td class="product-price">$35</td>-->
-<!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-<!--									<td class="product-total">1</td>-->
-<!--								</tr>-->
-<!--							</tbody>-->
-<!--						</table>-->
-
-						<table class="cart-table">
-							<tr>
-								<th>Quantity</th>
-								<th>Description</th>
-								<th>Price</th>
-								<th>Amount</th>
-								<th></th>
-							</tr>
-
-							<%@ taglib prefix="c" uri="jakarta.tags.core" %>
-							<c:forEach var="item" items="${cart.items}">
-								<tr>
-									<td>
-										<form action="cart" method="post">
-											<input type="hidden" name="productCode" value="${item.product.code}">
-											<input type=text name="quantity" value="${item.quantity}" id="quantity">
-											<input type="hidden" name="update" value="true">
-											<input type="submit" value="Update">
-										</form>
-									</td>
-									<td>${item.product.description}</td>
-									<td>${item.product.priceCurrencyFormat}</td>
-									<td>${item.totalCurrencyFormat}</td>
-									<td>
-										<a href="cart?productCode=${item.product.code}&amp;quantity=0">Remove Item</a>
-									</td>
-								</tr>
-							</c:forEach>
-						</table>
+				<div class="col-md-5">
+					<div class="single-product-img">
+						<img src="./assets/img/products/product-img.jpg" alt="">
 					</div>
 				</div>
-
-				<div class="col-lg-4">
-					<div class="total-section">
-						<table class="total-table">
-							<thead class="total-table-head">
-								<tr class="table-total-row">
-									<th>Total</th>
-									<th>Price</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Total: </strong></td>
-									<td>$545</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-						</div>
-					</div>
-
-					<div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
+				<div class="col-md-7">
+					<div class="single-product-content">
+						<h3><%=product.getName()%></h3>
+						<p class="single-product-pricing"><span>Per Kg</span> <%=product.getPrice()%></p>
+						<p><%=product.getDescription()%></p>
+						<div class="single-product-form">
 							<form action="index.jsp">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
+								<input type="number" placeholder="0">
 							</form>
+							<form class="cart-btn" action="cart" method="post">
+								<input type="hidden" name="fruitID" value="<%=product.getFruitID()%>">
+								<input type="submit"  value="Add To Cart">
+							</form>
+							<p><strong>Origin: </strong><%=product.getOrigin()%></p>
 						</div>
+						<h4>Share:</h4>
+						<ul class="product-share">
+							<li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href=""><i class="fab fa-twitter"></i></a></li>
+							<li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
+							<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end cart -->
+	<!-- end single product -->
+
+	<!-- more products -->
+	<div class="more-products mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">	
+						<h3><span class="orange-text">Related</span> Products</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+					</div>
+				</div>
+			</div>
+			<%
+				List<Product> products = ProductDB.getAllProducts();
+				request.setAttribute("products", products);
+			%>
+			<div class="row">
+				<c:forEach var="products" items="${products}">
+					<div class="col-lg-4 col-md-6 text-center">
+						<div class="single-product-item">
+							<div class="product-image">
+								<!-- Assuming you have an image URL property in your 'product' object -->
+								<a href="single-product.jsp?fruitID=${products.fruitID}"><img src="./assets/img/products/product-img.jpg" alt=""></a>
+									<%--                                <a href="single-product.jsp"></a>--%>
+
+							</div>
+							<h3>${products.name}</h3>
+							<p class="product-price"><span>Per Kg</span> ${products.price} </p>
+								<%--                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>--%>
+							<form class="cart-btn" action="cart" method="post">
+								<input type="hidden" name="fruitID" value="${products.fruitID}">
+								<input type="submit"  value="Add To Cart">
+							</form>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+	<!-- end more products -->
 
 	<!-- logo carousel -->
 	<div class="logo-carousel-section">
