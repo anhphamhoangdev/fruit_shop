@@ -21,10 +21,12 @@ public class ProductDB {
             try {
                 Query query =em2.createQuery("select p from Product p ORDER BY p.fruitID DESC");
                 query.setMaxResults(1);
-                Product lastProduct = (Product) query.getSingleResult();
-                int index= lastProduct != null ? Integer.parseInt(lastProduct.getFruitID().substring(1))+1:1;
+                List<Product> results = query.getResultList();
+                Product lastProduct = results.isEmpty() ? null : results.get(0);
+                 int index = lastProduct != null ? Integer.parseInt(lastProduct.getFruitID().substring(1)) + 1 : 1;
                 String FruitID= "F" + String.format("%03d",index);
                 product.setFruitID(FruitID);
+
                 em2.persist(product);
                 trans.commit();
             } catch (Exception e) {
