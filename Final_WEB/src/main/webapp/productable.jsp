@@ -19,15 +19,13 @@
     <meta name="description"
           content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Fruitka Admin</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
     <!-- Custom CSS -->
     <link href="assets/cssforadmin/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -47,7 +45,7 @@
     <header class="topbar" data-navbarbg="skin5">
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
             <div class="navbar-header" data-logobg="skin6">
-                <a class="navbar-brand" href="dashboard.html">
+                <a class="navbar-brand" href="dashboard.jsp">
                     <!-- Logo icon -->
                     <b class="logo-icon">
                         <!-- Dark Logo icon -->
@@ -104,7 +102,7 @@
                 <ul id="sidebarnav">
                     <!-- User Profile-->
                     <li class="sidebar-item pt-2">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
+                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.jsp"
                            aria-expanded="false">
                             <i class="far fa-clock" aria-hidden="true"></i>
                             <span class="hide-menu">Dashboard</span>
@@ -114,14 +112,14 @@
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.jsp"
                            aria-expanded="false">
                             <i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="hide-menu">Profile</span>
+                            <span class="hide-menu">Custom page</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.jsp"
                            aria-expanded="false">
                             <i class="fa fa-table" aria-hidden="true"></i>
-                            <span class="hide-menu">Basic Table</span>
+                            <span class="hide-menu">Customer Table</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -146,17 +144,7 @@
         <div class="page-breadcrumb bg-white">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h4 class="page-title">Basic Table</h4>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <div class="d-md-flex">
-                        <ol class="breadcrumb ms-auto">
-                            <li><a href="#" class="fw-normal">Dashboard</a></li>
-                        </ol>
-                        <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-                           class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade
-                            to Pro</a>
-                    </div>
+                    <h4 class="page-title">Product Table</h4>
                 </div>
             </div>
         </div>
@@ -175,7 +163,7 @@
                             <table class="table text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th class="border-top-0">id</th>
+<%--                                    <th class="border-top-0">id</th>--%>
                                     <th class="border-top-0">Name</th>
                                     <th class="border-top-0">price</th>
                                     <th class="border-top-0">date input</th>
@@ -188,7 +176,7 @@
                                 <c:forEach var="product" items="${product}">
                                     <tr>
                                             <%--                                    <td></td>--%>
-                                        <td>${product.fruitID}</td>
+<%--                                        <td>${product.fruitID}</td>--%>
                                         <td>${product.name}</td>
                                         <td>${product.price}</td>
                                         <td>${product.dateInput}</td>

@@ -1,13 +1,7 @@
 <%@ page import="business.Cart" %>
 <%@ page import="org.w3c.dom.stylesheets.LinkStyle" %>
 <%@ page import="business.Product" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: COMPUTER
-  Date: 11/26/2023
-  Time: 4:13 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
@@ -96,12 +90,6 @@
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="news.html">News</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="news.html">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
@@ -260,7 +248,7 @@
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="single-product.html"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
                         </div>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>

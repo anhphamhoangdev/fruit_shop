@@ -51,4 +51,14 @@ public class Invoice {
     public void setLineItem(Collection<LineItem> lineItem) {
         this.lineItem = lineItem;
     }
+    @Basic
+    private Double total;
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 }

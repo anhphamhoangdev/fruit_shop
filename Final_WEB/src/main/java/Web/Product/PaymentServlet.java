@@ -76,7 +76,7 @@
             content.append("<p>Total bill: "+cart.getTotalCurrentFormat()+ "</p>");
             content.append("<p>Thank you for choosing our services.</p>");
             content.append("<p>Best regards,</p>");
-            content.append("<p>Your Company Name</p>");
+            content.append("<p>A.P.A Company</p>");
             content.append("</body></html>");
 
             return content.toString();
@@ -108,16 +108,23 @@
                     invoice.setCustomer(customer);
                     invoice.setLineItem(lineItems);
                     invoice.setDate(new Date());
+                    invoice.setTotal(cart.totalBillWithoutShip()+ cart.Shipping());
                     String userEmail = customer.getEmail();
                     UserDB.insert(customer);
                     InvoiceDB.insert(invoice);
-
+                    session.setAttribute("invoice",invoice);
 
                     try {
                         sendEmail(userEmail,generateVerificationEmail(invoice,cart));
                     } catch (ParseException e) {
                         throw new RuntimeException(e);
                     }
+                    session.removeAttribute("cart");
+                    url = "/index.jsp";
+                }
+                else if (action.equals("back")) {
+                    session.removeAttribute("cart");
+                    url = "/index.jsp";
                 }
                 else {
                     url ="/checkout.jsp";

@@ -470,6 +470,25 @@
     // For demonstration, let's just close the modal
     closeModal();
   }
+
+  function showMessage(message) {
+    alert(message);
+  }
+
+  // Check if the retryMessage is present and show the pop-up
+  <% String retryMessage = (String) request.getAttribute("retryMessage");
+     if (retryMessage != null) { %>
+  window.onload = function() {
+    showMessage("<%= retryMessage %>");
+  }
+  <% } %>
+
+  <% String Message = (String) request.getAttribute("Message");
+       if (Message != null) { %>
+  window.onload = function() {
+    showMessage("<%= Message %>");
+  }
+  <% } %>
 </script>
 </body>
 </html>

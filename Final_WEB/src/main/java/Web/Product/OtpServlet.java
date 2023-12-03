@@ -90,6 +90,9 @@ public class OtpServlet extends HttpServlet {
             sendOtpEmail(userEmail, otp);
             response.getWriter().println("OTP sent to " + userEmail);
             session.setAttribute("emailOTP",userEmail);
+            String Message = "Email sent OTP successfully. Please check your email.And submit at OTP";
+            request.setAttribute("Message", Message);
+
         }
         servletContext.getRequestDispatcher(url)
                 .forward(request, response);

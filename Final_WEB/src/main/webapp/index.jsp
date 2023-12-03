@@ -239,7 +239,7 @@
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
                         <div class="product-image">
-                        <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+                        <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="assets/img/products/product-img-1.jpg" alt=""></a>
 <%--                        <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>--%>
 <%--                            <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
 <%--                        </div>--%>
