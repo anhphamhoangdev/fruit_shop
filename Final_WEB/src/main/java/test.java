@@ -8,16 +8,23 @@ import java.util.*;
 public class test {
     public static void main(String[] args) throws ParseException {
 
-        Product product = new Product();
-        product.setName("Strawberry");
-        product.setFruitID("S002");
-        product.setDescription("A juicy, citrus orange");
-        product.setOrigin("Florida, USA");
-        product.setPrice(10);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        product.setExp(dateFormat.parse("2023-12-15"));
-        product.setDateInput(new Date());
-        ProductDB.insert(product);
+
+//        Product product = new Product();
+//        product.setName("Strawberry");
+//        product.setFruitID("S002");
+//        product.setDescription("A juicy, citrus orange");
+//        product.setOrigin("Florida, USA");
+//        product.setPrice(10);
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        product.setExp(dateFormat.parse("2023-12-15"));
+//        product.setDateInput(new Date());
+//        ProductDB.insert(product);
+//        Admin admin = new Admin();
+//        admin.setAdminID("ad01");
+//        admin.setUserName("admin");
+//        admin.setPasswd("123456");
+//        AdminDB.insert(admin);
+
 
 //        LineItem lineItem = new LineItem();
 //        lineItem.setLineItemID("L001");
@@ -66,8 +73,8 @@ public class test {
 //            System.out.println("LineItem ID: " + item.getItem());
 //        }
 //        cart.getItems().stream().map(item -> "LineItem ID: " + item.getItem()).forEach(System.out::println);
-    }
-}
+//    }
+//}
 ////        Product product = new Product();
 ////        product.setFruitID("apple123");
 ////        product.setDescription("Juicy and sweet apple");
@@ -115,3 +122,17 @@ public class test {
 ////        }
 ////    }
 //}}
+        List<Double> doubles = new ArrayList<>();
+        List<String> stringValues = List.of("3.14", "42", "USA", "2.718");
+
+        for (String stringValue : stringValues) {
+            try {
+                double doubleValue = Double.parseDouble(stringValue);
+                doubles.add(doubleValue);
+            } catch (NumberFormatException e) {
+                // Handle non-numeric values if needed
+                System.out.println("Skipped non-numeric value: " + stringValue);
+            }
+        }
+    }
+}

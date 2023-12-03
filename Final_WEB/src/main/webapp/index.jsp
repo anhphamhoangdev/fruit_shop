@@ -3,6 +3,7 @@
 <%@ page import="business.Product" %>
 <%@ page import="Data.ProductDB" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +35,21 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>.my-button {
+        font-family: 'Poppins', sans-serif;
+        display: inline-block;
+        background-color: #F28123;
+        color: #fff;
+        padding: 10px 25px;
+        text-decoration: none; /* Remove underline for anchor tags */
+        border: none; /* Remove default button border */
+        cursor: pointer; /* Change cursor on hover */
+        border-radius: 50px;
+    }
 
+    .my-button:hover {
+        background-color: #E06800; /* Change background color on hover */
+    }</style>
 
 </head>
 <body>
@@ -224,18 +239,21 @@
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <!-- Assuming you have an image URL property in your 'product' object -->
-                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
-<%--                                <a href="single-product.html"></a>--%>
-
-                        </div>
+                        <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+<%--                        <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>--%>
+<%--                            <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
+<%--                        </div>--%>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-<%--                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>--%>
-                        <form class="cart-btn" action="cart" method="post">
+
+                        <form class="cart-btn fas" action="cart" method="post">
                             <input type="hidden" name="fruitID" value="${product.fruitID}">
-                            <input type="submit"  value="Add To Cart">
+                            <button type="submit" class="my-button">
+                                <i class="fas fa-shopping-cart"></i> Add To Cart
+                            </button>
                         </form>
+
+                        </div>
                     </div>
                 </div>
             </c:forEach>

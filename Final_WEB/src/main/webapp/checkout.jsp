@@ -1,4 +1,6 @@
+
 <%@ page import="business.Cart" %>
+<%@ page import="business.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html lang="en">
@@ -32,7 +34,48 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <!-- responsive -->
   <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
 
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
@@ -165,16 +208,30 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
                   <div class="billing-address-form">
-<%--                    <p><i>${message}</i></p>--%>
-                    <form action="order" method="post" >
-<%--                      <input type="hidden" name="action" value="order">--%>
+                    <form action="sendEmail" method="post" >
                       <p><input name="Name" type="text" placeholder="Name" value="${customer.name}"></p>
-                      <p><input name="Email" type="email" placeholder="Email" value="${customer.Email}"></p>
+                      <p><input name="Email" type="email" placeholder="Email" value="${sessionScope.emailOTP}"></p>
                       <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" ></p>
                       <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}"></p>
                       <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-                      <input type="submit" value="order">
+
+                      <input type="submit" value="Submit">
                     </form>
+                    <button id="myBtn">Open Modal</button>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <form id="otpForm" action="<%= request.getContextPath() %>/otpForm" method="post">
+                          <label for="otpInput">Enter OTP:</label>
+                          <input type="text" id="otpInput" name="otpInput" required>
+                          <button type="submit">Submit OTP</button>
+                        </form>
+                      </div>
+
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -212,6 +269,8 @@
                 </div>
               </div>
             </div>
+            <!-- Trigger/Open The Modal -->
+
           </div>
 
         </div>
@@ -255,11 +314,6 @@
             </tr>
             </tbody>
           </table>
-<%--          <a href="#" class="boxed-btn">Place Order</a>--%>
-<%--          <form class="boxed-btn" action="order" method="post">--%>
-<%--&lt;%&ndash;            <input type="hidden" name="fruitID" value="${product.fruitID}">&ndash;%&gt;--%>
-<%--            <input type="submit"  value="Place Order">--%>
-<%--          </form>--%>
         </div>
       </div>
     </div>
@@ -293,9 +347,7 @@
     </div>
   </div>
 </div>
-<!-- end logo carousel -->
 
-<!-- footer -->
 <div class="footer-area">
   <div class="container">
     <div class="row">
@@ -340,9 +392,7 @@
     </div>
   </div>
 </div>
-<!-- end footer -->
 
-<!-- copyright -->
 <div class="copyright">
   <div class="container">
     <div class="row">
@@ -365,9 +415,7 @@
     </div>
   </div>
 </div>
-<!-- end copyright -->
 
-<!-- jquery -->
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <!-- bootstrap -->
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -387,6 +435,41 @@
 <script src="assets/js/sticker.js"></script>
 <!-- main js -->
 <script src="assets/js/main.js"></script>
+<script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
 
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+
+  }
+  // Function to close the modal
+  function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+  }
+
+  // Function to submit OTP (you can modify this function based on your needs)
+  function submitOTP() {
+    var otpValue = document.getElementById("otpInput").value;
+
+    // Add your logic to handle the submitted OTP
+    // You can send it to the server, validate it, etc.
+
+    // For demonstration, let's just close the modal
+    closeModal();
+  }
+</script>
 </body>
 </html>

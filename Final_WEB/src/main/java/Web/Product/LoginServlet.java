@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import jakarta.servlet.annotation.*;
 import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
@@ -30,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             if (adminDB.login(username,pass) != null){
 
                 session.setAttribute("admin",adminDB.login(username,pass));
-                url ="/admin.jsp";
+                url ="/basic-table.jsp";
 
             }
             else {
