@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Fresh Corn Records</title>
+    <title>Fresh fruit</title>
     <link rel="shortcut icon" href="<c:url value='/images/favicon.ico'/>">
     <link rel="stylesheet" href="<c:url value='/assets/css/login.css'/> ">
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,13 +19,3 @@
         <h1>Fresh Corn Records</h1>
         <h2>Quality Sounds Served Up Fresh!</h2>
     </header>
-    <nav id="nav_bar">
-        <ul>
-            <li><a href="<c:url value=''/>">
-                    Admin</a></li>
-            <li><a href="<c:url value=''/>">
-                    Delete Cookies</a></li>
-            <li><a href="<c:url value=''/>">
-                    Show Cart</a></li>
-        </ul>
-    </nav>

@@ -1,7 +1,6 @@
 package Data;
 
 import business.Admin;
-import business.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;

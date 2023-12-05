@@ -1,7 +1,6 @@
 package Data;
 
 import business.LineItem;
-import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 public class LineItemDB {

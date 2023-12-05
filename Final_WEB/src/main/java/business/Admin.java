@@ -3,7 +3,6 @@ package business;
 import jakarta.persistence.*;
 
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 public class Admin {

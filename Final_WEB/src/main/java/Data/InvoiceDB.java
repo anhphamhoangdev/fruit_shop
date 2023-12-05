@@ -1,7 +1,6 @@
 package Data;
 
 import business.Invoice;
-import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;

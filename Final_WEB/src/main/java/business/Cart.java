@@ -3,8 +3,7 @@ package business;
 import java.text.NumberFormat;
 import java.util.*;
 import java.io.Serializable;
-import business.*;
-import Data.*;
+
 public class Cart implements Serializable {
 
     private List<LineItem> items;

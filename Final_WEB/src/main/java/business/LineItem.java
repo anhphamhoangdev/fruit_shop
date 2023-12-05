@@ -3,8 +3,7 @@ package business;
 import jakarta.persistence.*;
 
 import java.text.NumberFormat;
-import java.util.Collection;
-import business.*;
+
 @Entity
 public class LineItem {
     @Id

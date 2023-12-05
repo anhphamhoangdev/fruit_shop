@@ -37,15 +37,39 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
-<style>/* Add this CSS to your stylesheet or in a <style> tag in the head of your HTML document */
-.cart-section {
-    margin-bottom: 20px; /* Adjust the margin as needed */
-}
+    <style>/* Add this CSS to your stylesheet or in a <style> tag in the head of your HTML document */
+    .cart-section {
+        margin-bottom: 50px; /* Adjust the margin as needed */
+    }
 
-.more-products {
-    margin-top: 20px; /* Adjust the margin as needed */
-}
-</style>
+    .more-products {
+        margin-top: 50px; /* Adjust the margin as needed */
+    }
+    .breadcrumb-section.breadcrumb-bg {
+     background-image: url('/assets/img/hero-bg-2.jpg'); /* Replace with the actual path to your image */
+     background-size: cover;
+     background-position: center;
+     color: #fff; /* Adjust text color for better visibility on the background */
+    }
+
+    .my-button {
+         font-family: 'Poppins', sans-serif;
+         display: inline-block;
+         background-color: #F28123;
+         color: #fff;
+         padding: 10px 25px;
+         text-decoration: none; /* Remove underline for anchor tags */
+         border: none; /* Remove default button border */
+         cursor: pointer; /* Change cursor on hover */
+         border-radius: 50px;
+     }
+
+    .my-button:hover {
+        background-color: #E06800; /* Change background color on hover */
+    }
+
+    </style>
+
 </head>
 <body>
 
@@ -69,47 +93,35 @@
                             <img src="assets/img/logo.png" alt="">
                         </a>
                     </div>
-                    <!-- logo -->
-
-                    <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.jsp">Static Home</a></li>
-                                    <li><a href="index_2.html">Slider Home</a></li>
-                                </ul>
+                            <li class="current-list-item"><a href="index.jsp">Home</a>
                             </li>
                             <li><a href="about.html">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.html">404 page</a></li>
                                     <li><a href="about.html">About</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
                             <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>
                                 </div>
                             </li>
                         </ul>
                     </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+<%--                    <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>--%>
                     <div class="mobile-menu"></div>
                     <!-- menu end -->
                 </div>
@@ -120,23 +132,18 @@
 <!-- end header -->
 
 <!-- search area -->
-<div class="search-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                <div class="search-bar">
-                    <div class="search-bar-tablecell">
-                        <h3>Search For:</h3>
-                        <input type="text" placeholder="Keywords">
-                        <button type="submit">Search <i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end search arewa -->
+<%--<div class="search-area">--%>
+<%--    <div class="container">--%>
+<%--        <div class="row">--%>
+<%--            <div class="col-lg-12">--%>
+<%--&lt;%&ndash;                <span class="close-btn"><i class="fas fa-window-close"></i></span>&ndash;%&gt;--%>
+<%--                <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>--%>
+
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<%--<!-- end search arewa -->--%>
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
@@ -170,14 +177,15 @@
                         </tr>
 
                         <c:forEach var="i" items="${cart.items}">
-                            <tr>
+                            <tr class="table-total-row">
                                 <td>
                                     <form action="cart" method="post">
                                         <input type="hidden" name="fruitID" value="${i.item.fruitID}">
                                         <input type=text name="quantity" value="${i.quantity}" id="quantity">
                                         <input type="hidden" name="update" value="true">
-                                        <input type="submit" value="Update">
+                                        <button type="submit" class="my-button">Update </button>
                                     </form>
+
                                 </td>
                                 <td>${i.item.description}</td>
                                 <td>${i.item.priceCurrencyFormat}</td>

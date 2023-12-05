@@ -7,7 +7,7 @@
     
     <servlet>
         <servlet-name>CartServlet</servlet-name>
-        <servlet-class>Web.Product.CartServlet</servlet-class>
+        <servlet-class>Controller.CartServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
@@ -15,7 +15,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>productServlet</servlet-name>
-        <servlet-class>Web.Product.ProductServlet</servlet-class>
+        <servlet-class>Controller.ProductServlet</servlet-class>
     </servlet>
 
 
@@ -41,7 +41,7 @@
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>Web.Product.LoginServlet</servlet-class>
+        <servlet-class>Controller.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -50,7 +50,7 @@
 
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
-        <servlet-class>Web.Product.PaymentServlet</servlet-class>
+        <servlet-class>Controller.PaymentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
@@ -66,7 +66,7 @@
 <!--    </servlet-mapping>-->
     <servlet>
         <servlet-name>OtpServlet</servlet-name>
-        <servlet-class>Web.Product.OtpServlet</servlet-class>
+        <servlet-class>Controller.OtpServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>OtpServlet</servlet-name>

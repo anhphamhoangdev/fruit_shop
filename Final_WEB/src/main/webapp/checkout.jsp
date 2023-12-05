@@ -42,7 +42,7 @@
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
+      padding-top: 300px; /* Location of the box */
       left: 0;
       top: 0;
       width: 100%; /* Full width */
@@ -75,6 +75,21 @@
       text-decoration: none;
       cursor: pointer;
     }
+
+    #myBtn {
+    font-family: 'Poppins', sans-serif;
+      display: inline-block;
+      background-color: #F28123;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border:none;
+      border-radius: 50px;
+    }
+
+    #myBtn:hover {
+      background-color: #E06800; /* Darker orange on hover */
+    }
+
   </style>
 </head>
 <body>
@@ -145,7 +160,7 @@
               </li>
             </ul>
           </nav>
-          <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+          <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>
           <div class="mobile-menu"></div>
           <!-- menu end -->
         </div>
@@ -155,24 +170,6 @@
 </div>
 <!-- end header -->
 
-<!-- search area -->
-<div class="search-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <span class="close-btn"><i class="fas fa-window-close"></i></span>
-        <div class="search-bar">
-          <div class="search-bar-tablecell">
-            <h3>Search For:</h3>
-            <input type="text" placeholder="Keywords">
-            <button type="submit">Search <i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end search arewa -->
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
@@ -213,62 +210,17 @@
                       <p><input name="Email" type="email" placeholder="Email" value="${sessionScope.emailOTP}"></p>
                       <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" ></p>
                       <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}"></p>
+                      <p><input name="Credit" type="text" placeholder="Card number" value="${customer.creditCard}"></p>
                       <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
 
-                      <input type="submit" value="Submit">
+                      <input type="submit" value="Send OTP">
                     </form>
-                    <button id="myBtn">Open Modal</button>
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
-                      <!-- Modal content -->
-                      <div class="modal-content">
-                        <span class="close" onclick="closeModal()">&times;</span>
-                        <form id="otpForm" action="<%= request.getContextPath() %>/otpForm" method="post">
-                          <label for="otpInput">Enter OTP:</label>
-                          <input type="text" id="otpInput" name="otpInput" required>
-                          <button type="submit">Submit OTP</button>
-                        </form>
-                      </div>
-
-                    </div>
 
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="card single-accordion">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Shipping Address
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                  <div class="shipping-address-form">
-                    <p>Your shipping address form is here.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card single-accordion">
-              <div class="card-header" id="headingThree">
-                <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Card Details
-                  </button>
-                </h5>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                  <div class="card-details">
-                    <p>Your card details goes here.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
             <!-- Trigger/Open The Modal -->
 
           </div>
@@ -314,6 +266,23 @@
             </tr>
             </tbody>
           </table>
+<%--          <a href="#" class="boxed-btn">Place Order</a>--%>
+          <div style="padding: 20px;"></div>
+          <button id="myBtn" class="boxed-btn" >Submit OTP</button>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <form id="otpForm" action="<%= request.getContextPath() %>/otpForm" method="post">
+                <label for="otpInput">Enter OTP:</label>
+                <input type="text" id="otpInput" name="otpInput" required>
+                <button type="submit">Submit OTP</button>
+              </form>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>

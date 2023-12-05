@@ -78,43 +78,26 @@
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
-                            <li class="current-list-item"><a href="#">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.jsp">Static Home</a></li>
-                                    <li><a href="index_2.jsp">Slider Home</a></li>
-                                </ul>
+                            <li class="current-list-item"><a href="index.jsp">Home</a>
                             </li>
                             <li><a href="about.jsp">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.jsp">404 page</a></li>
                                     <li><a href="about.jsp">About</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="contact.jsp">Contact</a></li>
-                                    <li><a href="news.jsp">News</a></li>
-                                    <li><a href="shop.jsp"></a> </li>
                                 </ul>
                             </li>
-                            <li><a href="news.jsp">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="news.jsp">News</a></li>
-                                    <li><a href="single-news.jsp">Single News</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.jsp">Contact</a></li>
                             <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.jsp">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                     <!-- Add the user login icon -->
                                     <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>
                                 </div>
@@ -122,52 +105,68 @@
 
                         </ul>
                     </nav>
-<%--                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>--%>
-<%--                    <div class="mobile-menu"></div>--%>
-                    <!-- menu end -->
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end header -->
 
-<!-- Add your JSP code here -->
-
-<!-- Add your JavaScript code here -->
 </body>
 </html>
-<!-- search area -->
-<div class="search-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                <div class="search-bar">
-                    <div class="search-bar-tablecell">
-                        <h3>Search For:</h3>
-                        <input type="text" placeholder="Keywords">
-                        <button type="submit">Search <i class="fas fa-search"></i></button>
+
+<div class="homepage-slider">
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Fresh & Organic</p>
+                            <h1>Delicious Seasonal Fruits</h1>
+                            <div class="hero-btns">
+                                <a href="shop.jsp" class="boxed-btn">Fruit Collection</a>
+<%--                                <a href="contact.html" class="bordered-btn">Contact Us</a>--%>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end search area -->
-
-<!-- hero area -->
-<div class="hero-area hero-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9 offset-lg-2 text-center">
-                <div class="hero-text">
-                    <div class="hero-text-tablecell">
-                        <p class="subtitle">Fresh & Organic</p>
-                        <h1>Delicious Seasonal Fruits</h1>
-                        <div class="hero-btns">
-                            <a href="shop.jsp" class="boxed-btn">Fruit Collection</a>
-                            <a href="contact.html" class="bordered-btn">Contact Us</a>
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 text-center">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Fresh Everyday</p>
+                            <h1>100% Organic Collection</h1>
+                            <div class="hero-btns">
+                                <a href="shop.jsp" class="boxed-btn">Visit Shop</a>
+<%--                                <a href="contact.html" class="bordered-btn">Contact Us</a>--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- single home slider -->
+    <div class="single-homepage-slider homepage-bg-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 text-right">
+                    <div class="hero-text">
+                        <div class="hero-text-tablecell">
+                            <p class="subtitle">Mega Sale Going On!</p>
+                            <h1>Get December Discount</h1>
+                            <div class="hero-btns">
+                                <a href="shop.jsp" class="boxed-btn">Visit Shop</a>
+<%--                                <a href="contact.html" class="bordered-btn">Contact Us</a>--%>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,8 +174,6 @@
         </div>
     </div>
 </div>
-<!-- end hero area -->
-
 <!-- features list section -->
 <div class="list-section pt-80 pb-80">
     <div class="container">
