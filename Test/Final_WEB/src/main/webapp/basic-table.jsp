@@ -38,7 +38,15 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
+<%Admin admin = (Admin) session.getAttribute("admin");
+    ServletContext sc = request.getServletContext();
+    String url;
+    if (admin == null) {
+        // No valid session, redirect to login_error.jsp
+        url = "/login.jsp";
+        sc.getRequestDispatcher(url).forward(request, response);
+        return; // Important to stop further execution of this method
+    }%>
 <body>
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
@@ -115,12 +123,17 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <% %>
-                    <%Admin admin = AdminDB.selectadmin("ad01"); %>
+                    <% admin = AdminDB.selectadmin("ad01"); %>
                     <%request.setAttribute("admin",admin); %>
                     <li>
                         <a class="profile-pic" href="#">
                             <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
                                  class="img-circle"><span class="text-white font-medium">${admin.userName}</span></a>
+                    </li>
+                    <li>
+                        <form action="Logout" method="post" >
+                            <input type="submit" value="Logout" name="action">
+                        </form>
                     </li>
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
@@ -153,14 +166,14 @@
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.jsp"
                            aria-expanded="false">
                             <i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="hide-menu">Profile</span>
+                            <span class="hide-menu">Custom page</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.jsp"
                            aria-expanded="false">
                             <i class="fa fa-table" aria-hidden="true"></i>
-                            <span class="hide-menu">Basic Table</span>
+                            <span class="hide-menu">Customer Table</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
@@ -184,20 +197,9 @@
         <div class="page-breadcrumb bg-white">
             <div class="row align-items-center">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h4 class="page-title">Basic Table</h4>
-                </div>
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <div class="d-md-flex">
-                        <ol class="breadcrumb ms-auto">
-                            <li><a href="#" class="fw-normal">Dashboard</a></li>
-                        </ol>
-                        <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-                           class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade
-                            to Pro</a>
-                    </div>
+                    <h4 class="page-title">Customer Table</h4>
                 </div>
             </div>
-            <!-- /.col-lg-12 -->
         </div>
 
         <% List<Customer> customers = UserDB.getAllCustomer();
@@ -207,13 +209,13 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="white-box">
-                        <h3 class="box-title">Basic Table</h3>
+                        <h3 class="box-title">Customer Table</h3>
                         <p class="text-muted">Add class <code>.table</code></p>
                         <div class="table-responsive">
                             <table class="table text-nowrap">
                                 <thead>
                                 <tr>
-                                    <th class="border-top-0">id</th>
+<%--                                    <th class="border-top-0">id</th>--%>
                                     <th class="border-top-0">Name</th>
                                     <th class="border-top-0">email</th>
                                     <th class="border-top-0">contact</th>
@@ -223,8 +225,7 @@
                                 <tbody>
                                 <c:forEach var="customer" items="${customer}">
                                     <tr>
-                                            <%--                                    <td></td>--%>
-                                        <td>${customer.id}</td>
+<%--                                        <td>${customer.id}</td>--%>
                                         <td>${customer.name}</td>
                                         <td>${customer.email}</td>
                                         <td>${customer.contact}</td>

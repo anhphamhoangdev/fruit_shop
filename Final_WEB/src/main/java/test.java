@@ -121,27 +121,29 @@ public class test {
 ////        }
 ////    }
 //}}
-        Map<Product, Integer> productIntegerMap = new HashMap<>();
-        List<Invoice> invoiceList = InvoiceDB.selectInvoice();
-        for (Invoice invoice : invoiceList){
-            List<LineItem> lineItems = (List<LineItem>) invoice.getLineItem();
-            for(LineItem lineItem : lineItems){
-                Product product = lineItem.getItem();
-                int quantity = lineItem.getQuantity();
-                productIntegerMap.merge(product,quantity,Integer::sum);
-            }
-        }
-        Product mostPopular = null;
-        int maxQuantity = 0;
-        for (Map.Entry<Product,Integer>entry : productIntegerMap.entrySet()){
-            if(entry.getValue()>maxQuantity){
-                maxQuantity = entry.getValue();
-                mostPopular = entry.getKey();
-            }
-        }
-
-        System.out.println(mostPopular.getName());
-
+//        Map<Product, Integer> productIntegerMap = new HashMap<>();
+//        List<Invoice> invoiceList = InvoiceDB.selectInvoice();
+//        for (Invoice invoice : invoiceList){
+//            List<LineItem> lineItems = (List<LineItem>) invoice.getLineItem();
+//            for(LineItem lineItem : lineItems){
+//                Product product = lineItem.getItem();
+//                int quantity = lineItem.getQuantity();
+//                productIntegerMap.merge(product,quantity,Integer::sum);
+//            }
+//        }
+//        Product mostPopular = null;
+//        int maxQuantity = 0;
+//        for (Map.Entry<Product,Integer>entry : productIntegerMap.entrySet()){
+//            if(entry.getValue()>maxQuantity){
+//                maxQuantity = entry.getValue();
+//                mostPopular = entry.getKey();
+//            }
+//        }
+//
+//        System.out.println(mostPopular.getName());
+//
+//
+        System.out.println("Number "+ReportDB.numberVisitor());
 
     }
 }

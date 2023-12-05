@@ -14,29 +14,37 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
             throws ServletException, IOException {
-        String url ="/login.jsp";
+        String url ="/index.jsp";
         ServletContext sc = request.getServletContext();
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
+        String username =request.getParameter("j_username");
+        String pass =request.getParameter("j_password");
         if(action==null){
-            action = "j_security_check";
+            action = "Login";
         }
-        if (action.equals("j_security_check")){
-            String username =request.getParameter("j_username");
-            String pass =request.getParameter("j_password");
+        if (action.equals("Login")){
+
             AdminDB adminDB = new AdminDB();
             if (adminDB.login(username,pass) != null){
-
                 session.setAttribute("admin",adminDB.login(username,pass));
-                url ="/basic-table.jsp";
+                url ="/dashboard.jsp";
 
             }
             else {
-                url ="/login_error.jsp";
+                String retryMessage = "Incorrect account or password. Please retry.";
+                request.setAttribute("retryMessage", retryMessage);
             }
         }
         sc.getRequestDispatcher(url)
                 .forward(request, response);
+
+    }
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
     }
 
 }

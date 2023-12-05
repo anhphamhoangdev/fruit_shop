@@ -93,7 +93,11 @@
   </style>
 </head>
 <body>
-
+<%
+  response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+  response.addHeader("Pragma", "no-cache");
+  response.addDateHeader ("Expires", 0);
+%>
 <!--PreLoader-->
 <div class="loader">
   <div class="loader-inner">
@@ -115,61 +119,44 @@
             </a>
           </div>
           <!-- logo -->
-
+          <a class="mobile-show search-bar-icon" href="/index.jsp"><i class="fa-regular fa-circle-user"></i></a>
           <!-- menu start -->
           <nav class="main-menu">
             <ul>
-              <li class="current-list-item"><a href="#">Home</a>
-                <ul class="sub-menu">
-                  <li><a href="index.jsp">Static Home</a></li>
-                  <li><a href="index_2.html">Slider Home</a></li>
-                </ul>
+              <li class="current-list-item"><a href="index.jsp">Home</a>
               </li>
-              <li><a href="about.html">About</a></li>
+              <li><a href="about.jsp">About</a></li>
               <li><a href="#">Pages</a>
                 <ul class="sub-menu">
-                  <li><a href="404.html">404 page</a></li>
-                  <li><a href="about.html">About</a></li>
+                  <li><a href="about.jsp">About</a></li>
                   <li><a href="cart.jsp">Cart</a></li>
                   <li><a href="checkout.jsp">Check Out</a></li>
-                  <li><a href="contact.html">Contact</a></li>
-                  <li><a href="news.html">News</a></li>
-                  <li><a href="shop.jsp">Shop</a></li>
                 </ul>
               </li>
-              <li><a href="news.html">News</a>
-                <ul class="sub-menu">
-                  <li><a href="news.html">News</a></li>
-                  <li><a href="single-news.html">Single News</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact</a></li>
               <li><a href="shop.jsp">Shop</a>
                 <ul class="sub-menu">
                   <li><a href="shop.jsp">Shop</a></li>
                   <li><a href="checkout.jsp">Check Out</a></li>
-                  <li><a href="single-product.html">Single Product</a></li>
                   <li><a href="cart.jsp">Cart</a></li>
                 </ul>
               </li>
               <li>
                 <div class="header-icons">
                   <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                  <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                </div>
+                  <!-- Add the user login icon -->
+                  <%--                                    <a class="user-login-icon" href="index.jsp"><i class="fas fa-user-lock"></i></a>--%>
+                  <a href="#"class="user-login-icon" onclick="event.preventDefault(); showLoginPop()"><i class="fas fa-user-lock"></i></a>                                </div>
               </li>
+
             </ul>
           </nav>
-          <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>
-          <div class="mobile-menu"></div>
-          <!-- menu end -->
+
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- end header -->
-
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
@@ -206,11 +193,11 @@
                 <div class="card-body">
                   <div class="billing-address-form">
                     <form action="sendEmail" method="post" >
-                      <p><input name="Name" type="text" placeholder="Name" value="${customer.name}"></p>
-                      <p><input name="Email" type="email" placeholder="Email" value="${sessionScope.emailOTP}"></p>
-                      <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" ></p>
-                      <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}"></p>
-                      <p><input name="Credit" type="text" placeholder="Card number" value="${customer.creditCard}"></p>
+                      <p><input name="Name" type="text" placeholder="Name" value="${customer.name}" required></p>
+                      <p><input name="Email" type="email" placeholder="Email" value="${sessionScope.emailOTP}" required></p>
+                      <p><input name="Address" type="text" placeholder="Address" value="${customer.address}" required></p>
+                      <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}" required></p>
+                      <p><input name="Credit" type="text" placeholder="Paypal,Visa,..." value="${customer.creditCard}" required></p>
                       <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
 
                       <input type="submit" value="Send OTP">
@@ -229,9 +216,18 @@
       </div>
       <%Cart cart = (Cart) session.getAttribute("cart");%>
       <%
-        String totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
-        String Ship = cart.getShipCurrentFormat();
-        String totalBill=cart.getTotalCurrentFormat();
+        String totalBillWithoutShip;
+        String Ship;
+        String totalBill;
+        if (cart != null){
+          totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
+          Ship = cart.getShipCurrentFormat();
+          totalBill=cart.getTotalCurrentFormat();}
+        else {
+          totalBillWithoutShip = "0";
+          Ship = "0";
+          totalBill = "0";
+        }
       %>
       <div class="col-lg-4">
         <div class="order-details-wrap">
@@ -342,7 +338,6 @@
           <ul>
             <li><a href="index.jsp">Home</a></li>
             <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Shop</a></li>
             <li><a href="news.html">News</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -416,7 +411,6 @@
     modal.style.display = "none";
   }
 
-  // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
@@ -429,14 +423,9 @@
     modal.style.display = "none";
   }
 
-  // Function to submit OTP (you can modify this function based on your needs)
-  function submitOTP() {
+ function submitOTP() {
     var otpValue = document.getElementById("otpInput").value;
 
-    // Add your logic to handle the submitted OTP
-    // You can send it to the server, validate it, etc.
-
-    // For demonstration, let's just close the modal
     closeModal();
   }
 

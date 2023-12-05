@@ -1,11 +1,8 @@
-
-<%@ page import="business.Invoice" %>
 <%@ page import="Data.InvoiceDB" %>
 <%@ page import="java.util.List" %>
-<%@ page import="business.Cart" %>
-<%@ page import="business.LineItem" %>
 <%@ page import="Data.ReportDB" %>
-<%@ page import="business.Product" %>
+<%@ page import="java.rmi.server.RemoteRef" %>
+<%@ page import="business.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
@@ -33,23 +30,29 @@
 </head>
 
 <body>
-<!-- ============================================================== -->
-<!-- Preloader - style you can find in spinners.css -->
-<!-- ============================================================== -->
+
 <div class="preloader">
   <div class="lds-ripple">
     <div class="lds-pos"></div>
     <div class="lds-pos"></div>
   </div>
 </div>
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
+
 <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-  <!-- ============================================================== -->
-  <!-- Topbar header - style you can find in pages.scss -->
-  <!-- ============================================================== -->
+
+  <%
+    response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+    response.addHeader("Pragma", "no-cache");
+    response.addDateHeader ("Expires", 0);
+  %>
+  <%Admin admin1 = (Admin) session.getAttribute("admin");
+    ServletContext sc = request.getServletContext();
+    String url ="/index.jsp";
+    if(admin1==null){
+      response.sendRedirect(request.getContextPath() + url);
+    }
+  %>
   <header class="topbar" data-navbarbg="skin5">
     <nav class="navbar top-navbar navbar-expand-md navbar-dark">
       <div class="navbar-header" data-logobg="skin6">
@@ -79,11 +82,19 @@
         <ul class="navbar-nav ms-auto d-flex align-items-center">
 
           <li class=" in">
-            <form role="search" class="app-search d-none d-md-block me-3">
-              <input type="text" placeholder="Search..." class="form-control mt-0">
-              <a href="" class="active">
-                <i class="fa fa-search"></i>
-              </a>
+<%--            <form role="search" class="app-search d-none d-md-block me-3">--%>
+<%--              <input type="text" placeholder="Search..." class="form-control mt-0">--%>
+<%--              <a href="" class="active">--%>
+<%--                <i class="fa fa-search"></i>--%>
+<%--              </a>--%>
+<%--            </form>--%>
+
+
+          </li>
+          <li>
+            <form class="logout-form" action="logout" method="post">
+<%--              <input type="hidden" name="csrf_token" value="your_csrf_token_here">--%>
+              <input type="submit" value="Logout">
             </form>
           </li>
 
@@ -162,6 +173,8 @@
         total_revenue += invoice.getTotal();
       }
       Product mostpopularProduct = ReportDB.popularProduct();
+
+      Long visitors = ReportDB.numberVisitor();
       %>
       <div class="row justify-content-center">
         <div class="col-lg-4 col-md-12">
@@ -194,14 +207,14 @@
         </div>
         <div class="col-lg-4 col-md-12">
           <div class="white-box analytics-info">
-            <h3 class="box-title">Unique Visitor</h3>
+            <h3 class="box-title">Visitors</h3>
             <ul class="list-inline two-part d-flex align-items-center mb-0">
               <li>
                 <div id="sparklinedash3"><canvas width="67" height="30"
                                                  style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                 </div>
               </li>
-              <li class="ms-auto"><span class="counter text-info">911</span>
+              <li class="ms-auto"><span class="counter text-info"><%= visitors%></span>
               </li>
             </ul>
           </div>
@@ -449,29 +462,15 @@
         <!-- /.col -->
       </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- footer -->
-    <!-- ============================================================== -->
+
     <footer class="footer text-center"> 2021 © Ample Admin brought to you by <a
             href="https://www.wrappixel.com/">wrappixel.com</a>
     </footer>
-    <!-- ============================================================== -->
-    <!-- End footer -->
-    <!-- ============================================================== -->
+
   </div>
-  <!-- ============================================================== -->
-  <!-- End Page wrapper  -->
-  <!-- ============================================================== -->
+
 </div>
-<!-- ============================================================== -->
-<!-- End Wrapper -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- All Jquery -->
-<!-- ============================================================== -->
+
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>

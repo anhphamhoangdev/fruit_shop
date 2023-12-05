@@ -62,6 +62,8 @@ public class OtpServlet extends HttpServlet {
         ServletContext servletContext = request.getServletContext();
         String action = request.getParameter("action");
         String url ="/checkout.jsp";
+
+
         if(action == null) {
             action = "sendEmail";
         }
@@ -70,7 +72,6 @@ public class OtpServlet extends HttpServlet {
         }
         else if (action == "sendEmail"){
             String name = request.getParameter("Name");
-//            String email = request.getParameter("Email");
             String address = request.getParameter("Address");
             String contact = request.getParameter("Phone");
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -85,14 +86,19 @@ public class OtpServlet extends HttpServlet {
             customer.setAddress(address);
             customer.setCreditCard(card);
             session.setAttribute("customer",customer);
-            String otp = generateOtp();
-            session.setAttribute("otp", otp);
-            sendOtpEmail(userEmail, otp);
-            response.getWriter().println("OTP sent to " + userEmail);
-            session.setAttribute("emailOTP",userEmail);
-            String Message = "Email sent OTP successfully. Please check your email.And submit at OTP";
-            request.setAttribute("Message", Message);
-
+            if(customer != null) {
+                String otp = generateOtp();
+                session.setAttribute("otp", otp);
+                sendOtpEmail(userEmail, otp);
+                response.getWriter().println("OTP sent to " + userEmail);
+                session.setAttribute("emailOTP", userEmail);
+                String Message = "Please check your email. Please confirm OTP";
+                request.setAttribute("Message", Message);
+            }
+            else {
+                String retryMessage = "Please fill information.";
+                request.setAttribute("retryMessage", retryMessage);
+            }
         }
         servletContext.getRequestDispatcher(url)
                 .forward(request, response);

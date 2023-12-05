@@ -49,14 +49,10 @@ public class ProductServlet extends HttpServlet {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-
                 String origin = req.getParameter("Origin");
-
-
-//            product.setDescription();
                 ProductDB.insert(name,origin,priceProduct,exp,date,Description);
             }
-             else if (update != null) {
+            else if (update != null) {
                 String name = req.getParameter("NameProduct");
                 String price = req.getParameter("Price");
 
@@ -65,7 +61,7 @@ public class ProductServlet extends HttpServlet {
                     priceProduct=0;
                 }
                 else{
-                     priceProduct = Integer.parseInt(price);
+                    priceProduct = Integer.parseInt(price);
                 }
                 String dateString = req.getParameter("exp");
                 String Description = req.getParameter("Description");

@@ -491,7 +491,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-bg {
-  background-image: url(../img/breadcrumb-bg.jpg);
+  background-image: url(../img/hero-bg-3.jpg);
 }
 
 .breadcrumb-text p {
@@ -2591,6 +2591,7 @@ td.product-remove a {
 
 tr.table-total-row {
   background-color: #efefef;
+  text-align: center;
 }
 
 tr.table-total-row th {

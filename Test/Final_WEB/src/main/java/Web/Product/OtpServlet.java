@@ -1,8 +1,8 @@
 package Web.Product;
-
+import Data.UserDB;
 import business.Customer;
-import business.Invoice;
 import jakarta.mail.*;
+import jakarta.mail.Authenticator;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.servlet.ServletContext;
@@ -11,39 +11,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.util.Random;
 
 public class OtpServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        ServletContext servletContext = request.getServletContext();
-        String action = request.getParameter("action");
-        String url ="/index.jsp";
-        if(action == null) {
-            action = "order";
-        }
-        if (action == "shop") {
-            url ="/shop.jsp";
-        }
-        else if (action == "sendEmail"){
-            Customer customer = (Customer) request.getAttribute("customer");
-//            String userEmail = customer.getEmail();
-            String userEmail = request.getParameter("Email");
-            Invoice invoice = (Invoice) customer.getBill();
-            // Generate OTP
-            String otp = generateOtp();
-            // Save OTP in session for verification
-            HttpSession session = request.getSession();
-            session.setAttribute("otp", otp);
-            sendOtpEmail(userEmail, otp);
-            response.getWriter().println("OTP sent to " + userEmail);
-        }
-        servletContext.getRequestDispatcher(url)
-                .forward(request, response);
-    }
     private String generateOtp() {
         Random random = new Random();
         return String.format("%04d", random.nextInt(10000));
@@ -52,7 +25,7 @@ public class OtpServlet extends HttpServlet {
     private void sendOtpEmail(String toEmail, String otp) {
         // Your email configuration
         final String username = "fsmile3107@gmail.com";
-        final String password = "quan2032003";
+        final String password = "ptkc prht nagg sxwk";
 
         // Set the properties
         Properties props = new Properties();
@@ -60,7 +33,6 @@ public class OtpServlet extends HttpServlet {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
-
         // Get the Session object
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
@@ -75,10 +47,7 @@ public class OtpServlet extends HttpServlet {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("OTP Verification");
             message.setText("Your OTP for email verification is: " + otp);
-
-            // Send the message
             Transport.send(message);
-
             System.out.println("Email sent successfully!");
 
         } catch (MessagingException e) {
@@ -86,4 +55,53 @@ public class OtpServlet extends HttpServlet {
         }
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+        ServletContext servletContext = request.getServletContext();
+        String action = request.getParameter("action");
+        String url ="/checkout.jsp";
+        if(action == null) {
+            action = "sendEmail";
+        }
+        if (action == "shop") {
+            url ="/shop.jsp";
+        }
+        else if (action == "sendEmail"){
+            String name = request.getParameter("Name");
+//            String email = request.getParameter("Email");
+            String address = request.getParameter("Address");
+            String contact = request.getParameter("Phone");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String userEmail = request.getParameter("Email");
+            String moreInfo = request.getParameter("bill");
+            Customer customer = new Customer();
+            customer.setId(customer.getId());
+            customer.setName(name);
+            customer.setEmail(userEmail);
+            customer.setContact(contact);
+            customer.setAddress(address);
+//            UserDB.insert(customer);
+            session.setAttribute("customer",customer);
+            String otp = generateOtp();
+            session.setAttribute("otp", otp);
+            sendOtpEmail(userEmail, otp);
+            response.getWriter().println("OTP sent to " + userEmail);
+            session.setAttribute("emailOTP",userEmail);
+            String Message = "Email sent OTP successfully. Please check your email.And submit at OTP";
+            request.setAttribute("Message", Message);
+
+        }
+        servletContext.getRequestDispatcher(url)
+                .forward(request, response);
+    }
+    @Override
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
+
 }

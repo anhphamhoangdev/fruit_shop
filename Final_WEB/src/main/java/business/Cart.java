@@ -81,9 +81,11 @@ public class Cart implements Serializable {
     public double Shipping(){
         return this.totalBillWithoutShip()*0.1;
     }
-    public String getTotalCurrentFormat(){
+    public String getTotalCurrentFormat() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
-        return currency.format(this.totalBillWithoutShip()+ this.Shipping());
+        double total = this.totalBillWithoutShip() + this.Shipping();
+        double roundedTotal = Math.round(total * 100.0) / 100.0; // Round to 2 decimal places
+        return currency.format(roundedTotal);
     }
     public String getShipCurrentFormat(){
         NumberFormat currency = NumberFormat.getCurrencyInstance();

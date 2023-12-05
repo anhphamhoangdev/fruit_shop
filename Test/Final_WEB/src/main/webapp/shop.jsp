@@ -37,7 +37,21 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <style>.my-button {
+        font-family: 'Poppins', sans-serif;
+        display: inline-block;
+        background-color: #F28123;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none; /* Remove underline for anchor tags */
+        border: none; /* Remove default button border */
+        cursor: pointer; /* Change cursor on hover */
+        border-radius: 50px;
+    }
 
+    .my-button:hover {
+        background-color: #E06800; /* Change background color on hover */
+    }</style>
 </head>
 <body>
 
@@ -80,13 +94,13 @@
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="news.jsp">News</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="news.html">News</a>
+                            <li><a href="news.jsp">News</a>
                                 <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="news.jsp">News</a></li>
                                     <li><a href="single-news.html">Single News</a></li>
                                 </ul>
                             </li>
@@ -95,7 +109,7 @@
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.jsp">Single Product</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
@@ -150,6 +164,8 @@
     </div>
 </div>
 <!-- end breadcrumb section -->
+
+<!-- products -->
 <%
     List<Product> products = ProductDB.getAllProducts();
     request.setAttribute("products", products);
@@ -179,7 +195,7 @@
                     <div class="single-product-item">
                         <div class="product-image">
                             <!-- Assuming you have an image URL property in your 'product' object -->
-                            <a href="single-product.jsp?fruitID=${product.fruitID}"><img src="./assets/img/products/product-img.jpg" alt=""></a>
+                            <a href="single-product.jsp?fruitID=${product.fruitID}"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
 
                                 <%--                                <a href="single-product.jsp"></a>--%>
 
@@ -267,7 +283,7 @@
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Shop</a></li>
-                        <li><a href="news.html">News</a></li>
+                        <li><a href="news.jsp">News</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

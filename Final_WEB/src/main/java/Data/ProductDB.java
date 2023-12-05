@@ -112,4 +112,20 @@ public class ProductDB {
         }
         return (Product)result;
     }
+
+public static List<Product> findProduct(String name) {
+    EntityManager em = DBUtil.getEmFactory().createEntityManager();
+    String qString = "SELECT p FROM Product p WHERE p.name LIKE :name";
+    TypedQuery<Product> q = em.createQuery(qString, Product.class);
+    q.setParameter("name", "%" + name + "%");
+    List<Product> products = null;
+    try {
+        products = q.getResultList();
+    } catch (NoResultException ex) {
+        return null;
+    } finally {
+        em.close();
+    }
+    return products;
+}
 }

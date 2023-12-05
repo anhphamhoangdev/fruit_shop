@@ -1,9 +1,11 @@
+<%@ page import="business.Admin" %>
 <jsp:include page="/includes/header.jsp" />
 <jsp:include page="/includes/column_left_all.jsp" />
 
 <!-- start the middle column -->
 
 <section>
+
 
     <h1>Login Form</h1>
     <p>Please enter a username and password to continue.</p>
@@ -13,8 +15,9 @@
         <label>Password</label>
         <input type="password" name="j_password"><br>
         <label>&nbsp;</label>
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" name="action">
     </form>
+
 
 </section>
 

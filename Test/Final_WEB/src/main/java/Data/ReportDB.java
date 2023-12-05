@@ -1,11 +1,10 @@
 package Data;
 
-import business.*;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
-import jakarta.persistence.TypedQuery;
+import business.Invoice;
+import business.LineItem;
+import business.Product;
+import jakarta.persistence.criteria.CriteriaBuilder;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,21 +41,6 @@ public class ReportDB {
             }
         }
         return mostPopular;
-    }
-
-    public static long numberVisitor(){
-        EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT count(c) FROM Customer c ";
-        TypedQuery<Long> q = em.createQuery(qString, Long.class);
-        Long results = null;
-        try {
-            results = q.getSingleResult();
-        } catch (NoResultException ex) {
-            return 0L;
-        } finally {
-            em.close();
-        }
-        return results;
     }
 
 

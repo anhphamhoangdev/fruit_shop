@@ -1,10 +1,7 @@
-<%@ page import="business.Cart" %><%--
-  Created by IntelliJ IDEA.
-  User: COMPUTER
-  Date: 11/26/2023
-  Time: 4:13 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="business.Cart" %>
+<%@ page import="org.w3c.dom.stylesheets.LinkStyle" %>
+<%@ page import="business.Product" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
@@ -40,7 +37,19 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
+<style>/* Add this CSS to your stylesheet or in a <style> tag in the head of your HTML document */
+.cart-section {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
 
+.more-products {
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+.breadcrumb-section .breadcrumb-bg{
+    background-image: url("assets/img/hero-bg-2.jpg");
+}
+
+</style>
 </head>
 <body>
 
@@ -83,14 +92,8 @@
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
                                     <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="news.jsp">News</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="news.html">News</a>
-                                <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
                                 </ul>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
@@ -98,7 +101,7 @@
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="single-product.jsp">Single Product</a></li>
+                                    <li><a href="single-product.html">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
@@ -160,44 +163,6 @@
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="cart-table-wrap">
-                    <!--						<table class="cart-table">-->
-                    <!--							<thead class="cart-table-head">-->
-                    <!--								<tr class="table-head-row">-->
-                    <!--									<th class="product-remove"></th>-->
-                    <!--									<th class="product-image">Product Image</th>-->
-                    <!--									<th class="product-name">Name</th>-->
-                    <!--									<th class="product-price">Price</th>-->
-                    <!--									<th class="product-quantity">Quantity</th>-->
-                    <!--									<th class="product-total">Total</th>-->
-                    <!--								</tr>-->
-                    <!--							</thead>-->
-                    <!--							<tbody>-->
-                    <!--								<tr class="table-body-row">-->
-                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-                    <!--									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>-->
-                    <!--									<td class="product-name">Strawberry</td>-->
-                    <!--									<td class="product-price">$85</td>-->
-                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-                    <!--									<td class="product-total">1</td>-->
-                    <!--								</tr>-->
-                    <!--								<tr class="table-body-row">-->
-                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-                    <!--									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>-->
-                    <!--									<td class="product-name">Berry</td>-->
-                    <!--									<td class="product-price">$70</td>-->
-                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-                    <!--									<td class="product-total">1</td>-->
-                    <!--								</tr>-->
-                    <!--								<tr class="table-body-row">-->
-                    <!--									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>-->
-                    <!--									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>-->
-                    <!--									<td class="product-name">Lemon</td>-->
-                    <!--									<td class="product-price">$35</td>-->
-                    <!--									<td class="product-quantity"><input type="number" placeholder="0"></td>-->
-                    <!--									<td class="product-total">1</td>-->
-                    <!--								</tr>-->
-                    <!--							</tbody>-->
-                    <!--						</table>-->
 
                     <table class="cart-table">
                         <tr>
@@ -229,6 +194,7 @@
                     </table>
                 </div>
             </div>
+
             <%Cart cart = (Cart) session.getAttribute("cart");%>
             <%
                 String totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
@@ -260,53 +226,47 @@
                         </tbody>
                     </table>
                     <div class="cart-buttons">
-                        <a href="cart.jsp" class="boxed-btn">Update Cart</a>
                         <a href="checkout.jsp" class="boxed-btn black">Check Out</a>
                     </div>
                 </div>
+    </div>
+</div>
+<!-- more products -->
+<div class="more-products mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Related</span> Products</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+                </div>
+            </div>
+        </div>
 
-                <div class="coupon-section">
-                    <h3>Apply Coupon</h3>
-                    <div class="coupon-form-wrap">
-                        <form action="index.jsp">
-                            <p><input type="text" placeholder="Coupon"></p>
-                            <p><input type="submit" value="Apply"></p>
+        <div class="row">
+            <% List<Product> recommended = (List<Product>) session.getAttribute("productRecommended");
+            request.setAttribute("products", recommended);
+            %>
+            <c:forEach var="product" items="${products}">
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="single-product-item">
+                        <div class="product-image">
+                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
+                        <form class="cart-btn fas" action="cart" method="post">
+                            <input type="hidden" name="fruitID" value="${product.fruitID}">
+                            <button type="submit" class="my-button">
+                                <i class="fas fa-shopping-cart"></i> Add To Cart
+                            </button>
                         </form>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
 </div>
-<!-- end cart -->
-
-<!-- logo carousel -->
-<div class="logo-carousel-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="logo-carousel-inner">
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/1.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/2.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/3.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/4.png" alt="">
-                    </div>
-                    <div class="single-logo-item">
-                        <img src="assets/img/company-logos/5.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end logo carousel -->
 
 <!-- footer -->
 <div class="footer-area">
@@ -333,9 +293,7 @@
                     <h2 class="widget-title">Pages</h2>
                     <ul>
                         <li><a href="index.jsp">Home</a></li>
-                        <li><a href="about.html">About</a></li>
                         <li><a href="services.html">Shop</a></li>
-                        <li><a href="news.html">News</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -353,6 +311,7 @@
         </div>
     </div>
 </div>
+
 <!-- end footer -->
 
 <!-- copyright -->

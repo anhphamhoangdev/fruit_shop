@@ -8,7 +8,18 @@
 <%@ page import="Data.AdminDB" %>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
+<%
+    response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+    response.addHeader("Pragma", "no-cache");
+    response.addDateHeader ("Expires", 0);
+%>
+<%Admin admin1 = (Admin) session.getAttribute("admin");
+    String url;
+    if(admin1==null){
+        url ="/index.jsp";
+        response.sendRedirect(request.getContextPath() + url);
+    }
+%>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,15 +57,10 @@
         <nav class="navbar top-navbar navbar-expand-md navbar-dark">
             <div class="navbar-header" data-logobg="skin6">
                 <a class="navbar-brand" href="dashboard.jsp">
-                    <!-- Logo icon -->
                     <b class="logo-icon">
-                        <!-- Dark Logo icon -->
                         <img src="plugins/images/logo-icon.png" alt="homepage" />
                     </b>
-                    <!--End Logo icon -->
-                    <!-- Logo text -->
                     <span class="logo-text">
-                            <!-- dark Logo text -->
                             <img src="plugins/images/logo-text.png" alt="homepage" />
                         </span>
                 </a>
@@ -72,14 +78,13 @@
                 <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                     <!-- ============================================================ -->
-                    <li class=" in">
-                        <form role="search" class="app-search d-none d-md-block me-3">
-                            <input type="text" placeholder="Search..." class="form-control mt-0">
-                            <a href="" class="active">
-                                <i class="fa fa-search"></i>
-                            </a>
+                    <li>
+                        <form class="logout-form" action="logout" method="post">
+                            <%--              <input type="hidden" name="csrf_token" value="your_csrf_token_here">--%>
+                            <input type="submit" value="Logout">
                         </form>
                     </li>
+
                     <!-- ============================================================= -->
                    <%Admin admin = AdminDB.selectadmin("A001"); %>
           <%request.setAttribute("admin",admin); %>

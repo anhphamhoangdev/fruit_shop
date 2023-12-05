@@ -56,14 +56,7 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/otpForm</url-pattern>
     </servlet-mapping>
-<!--    <servlet>-->
-<!--        <servlet-name>EmailServlet</servlet-name>-->
-<!--        <servlet-class>Web.Product.EmailServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>EmailServlet</servlet-name>-->
-<!--        <url-pattern>/sendEmail</url-pattern>-->
-<!--    </servlet-mapping>-->
+
     <servlet>
         <servlet-name>OtpServlet</servlet-name>
         <servlet-class>Controller.OtpServlet</servlet-class>
@@ -72,5 +65,12 @@
         <servlet-name>OtpServlet</servlet-name>
         <url-pattern>/sendEmail</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>Controller.ReportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>

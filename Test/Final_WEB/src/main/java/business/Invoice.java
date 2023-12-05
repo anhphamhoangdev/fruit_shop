@@ -41,7 +41,7 @@ public class Invoice {
         this.customer = customer;
     }
 
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<LineItem> lineItem;
 
     public Collection<LineItem> getLineItem() {
@@ -51,7 +51,6 @@ public class Invoice {
     public void setLineItem(Collection<LineItem> lineItem) {
         this.lineItem = lineItem;
     }
-
     @Basic
     private Double total;
 

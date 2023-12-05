@@ -8,6 +8,7 @@ import java.util.*;
 public class test {
     public static void main(String[] args) throws ParseException {
 
+
 //        Product product = new Product();
 //        product.setName("Strawberry");
 //        product.setFruitID("S002");
@@ -18,11 +19,11 @@ public class test {
 //        product.setExp(dateFormat.parse("2023-12-15"));
 //        product.setDateInput(new Date());
 //        ProductDB.insert(product);
-        Admin admin = new Admin();
-        admin.setAdminID("ad01");
-        admin.setUserName("admin");
-        admin.setPasswd("123456");
-        AdminDB.insert(admin);
+//        Admin admin = new Admin();
+//        admin.setAdminID("ad01");
+//        admin.setUserName("admin");
+//        admin.setPasswd("123456");
+//        AdminDB.insert(admin);
 
 
 //        LineItem lineItem = new LineItem();
@@ -72,8 +73,8 @@ public class test {
 //            System.out.println("LineItem ID: " + item.getItem());
 //        }
 //        cart.getItems().stream().map(item -> "LineItem ID: " + item.getItem()).forEach(System.out::println);
-    }
-}
+//    }
+//}
 ////        Product product = new Product();
 ////        product.setFruitID("apple123");
 ////        product.setDescription("Juicy and sweet apple");
@@ -121,3 +122,27 @@ public class test {
 ////        }
 ////    }
 //}}
+        Map<Product, Integer> productIntegerMap = new HashMap<>();
+        List<Invoice> invoiceList = InvoiceDB.selectInvoice();
+        for (Invoice invoice : invoiceList){
+            List<LineItem> lineItems = (List<LineItem>) invoice.getLineItem();
+            for(LineItem lineItem : lineItems){
+                Product product = lineItem.getItem();
+                int quantity = lineItem.getQuantity();
+                productIntegerMap.merge(product,quantity,Integer::sum);
+            }
+        }
+        Product mostPopular = null;
+        int maxQuantity = 0;
+        for (Map.Entry<Product,Integer>entry : productIntegerMap.entrySet()){
+            if(entry.getValue()>maxQuantity){
+                maxQuantity = entry.getValue();
+                mostPopular = entry.getKey();
+            }
+        }
+
+        System.out.println(mostPopular.getName());
+
+
+    }
+}

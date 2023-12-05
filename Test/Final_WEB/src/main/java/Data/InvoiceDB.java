@@ -1,12 +1,10 @@
 package Data;
 
 import business.Invoice;
-import business.LineItem;
 import business.Product;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.util.List;
 
@@ -25,9 +23,11 @@ public class InvoiceDB {
             em.close();
         }
     }
-    public static List<Invoice> getAllInvoice() {
+    public static List<Invoice> selectInvoice(){
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        TypedQuery<Invoice> query = em.createQuery("SELECT i FROM Invoice i", Invoice.class);
+        TypedQuery<Invoice> query = em.createQuery("SELECT p FROM Invoice p", Invoice.class);
         return query.getResultList();
     }
+
+
 }

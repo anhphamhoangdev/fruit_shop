@@ -9,6 +9,10 @@
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>Web.Product.CartServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>Web.Product.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/cart</url-pattern>
@@ -19,20 +23,25 @@
     </servlet>
 
 
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>productServlet</servlet-name>-->
+<!--        <url-pattern>/loadProducts</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    -->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>productServlet</servlet-name>-->
+<!--        <url-pattern>/insertProduct</url-pattern>-->
+<!--    </servlet-mapping>-->
+
     <servlet-mapping>
         <servlet-name>productServlet</servlet-name>
         <url-pattern>/controllProduct</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>productServlet</servlet-name>
-        <url-pattern>/singleProduct</url-pattern>
-    </servlet-mapping>
-    
+
     <servlet-mapping>
         <servlet-name>productServlet</servlet-name>
         <url-pattern>/insert</url-pattern>
     </servlet-mapping>
-
 
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -43,15 +52,26 @@
         <url-pattern>/j_security_check</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>PaymentServlet</servlet-name>
         <servlet-class>Web.Product.PaymentServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PaymentServlet</servlet-name>
-        <url-pattern>/order</url-pattern>
+        <url-pattern>/otpForm</url-pattern>
     </servlet-mapping>
-
+<!--    <servlet>-->
+<!--        <servlet-name>EmailServlet</servlet-name>-->
+<!--        <servlet-class>Web.Product.EmailServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>EmailServlet</servlet-name>-->
+<!--        <url-pattern>/sendEmail</url-pattern>-->
+<!--    </servlet-mapping>-->
     <servlet>
         <servlet-name>OtpServlet</servlet-name>
         <servlet-class>Web.Product.OtpServlet</servlet-class>
@@ -60,5 +80,5 @@
         <servlet-name>OtpServlet</servlet-name>
         <url-pattern>/sendEmail</url-pattern>
     </servlet-mapping>
-    
+
 </web-app>

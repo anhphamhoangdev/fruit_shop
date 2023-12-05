@@ -45,12 +45,7 @@
     .more-products {
         margin-top: 50px; /* Adjust the margin as needed */
     }
-    .breadcrumb-section.breadcrumb-bg {
-     background-image: url('/assets/img/hero-bg-2.jpg'); /* Replace with the actual path to your image */
-     background-size: cover;
-     background-position: center;
-     color: #fff; /* Adjust text color for better visibility on the background */
-    }
+
 
     .my-button {
          font-family: 'Poppins', sans-serif;
@@ -66,6 +61,9 @@
 
     .my-button:hover {
         background-color: #E06800; /* Change background color on hover */
+    }
+    .table-total-row{
+        background-color: #FFFFFF;
     }
 
     </style>
@@ -116,12 +114,12 @@
                             <li>
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>
+                                    <a class="user-login-icon" href="index.jsp"><i class="fas fa-user-lock"></i></a>
                                 </div>
                             </li>
                         </ul>
                     </nav>
-<%--                    <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>--%>
+<%--                    <a class="mobile-show search-bar-icon" href="/index.jsp"><i class="fa-regular fa-circle-user"></i></a>--%>
                     <div class="mobile-menu"></div>
                     <!-- menu end -->
                 </div>
@@ -131,19 +129,6 @@
 </div>
 <!-- end header -->
 
-<!-- search area -->
-<%--<div class="search-area">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-12">--%>
-<%--&lt;%&ndash;                <span class="close-btn"><i class="fas fa-window-close"></i></span>&ndash;%&gt;--%>
-<%--                <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>--%>
-
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<%--<!-- end search arewa -->--%>
 
 <!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
@@ -170,7 +155,7 @@
                     <table class="cart-table">
                         <tr>
                             <th>Quantity</th>
-                            <th>Description</th>
+                            <th>Name</th>
                             <th>Price</th>
                             <th>Amount</th>
                             <th></th>
@@ -187,7 +172,7 @@
                                     </form>
 
                                 </td>
-                                <td>${i.item.description}</td>
+                                <td>${i.item.name}</td>
                                 <td>${i.item.priceCurrencyFormat}</td>
                                 <td>${i.totalCurrencyFormat}</td>
                                 <td>
@@ -201,9 +186,18 @@
 
             <%Cart cart = (Cart) session.getAttribute("cart");%>
             <%
-                String totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
-                String Ship = cart.getShipCurrentFormat();
-                String totalBill=cart.getTotalCurrentFormat();
+                String totalBillWithoutShip;
+                String Ship;
+                String totalBill;
+                if (cart != null){
+                    totalBillWithoutShip=cart.getTotalWithoutShipCurrencyFormat();
+                    Ship = cart.getShipCurrentFormat();
+                    totalBill=cart.getTotalCurrentFormat();}
+                else {
+                    totalBillWithoutShip = "0";
+                    Ship = "0";
+                    totalBill = "0";
+                }
             %>
             <div class="col-lg-4">
                 <div class="total-section">

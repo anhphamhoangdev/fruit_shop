@@ -1,9 +1,10 @@
-<%@ page import="business.Product" %>
-<%@ page import="Data.ProductDB" %>
-<%@ page import="java.util.List" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: COMPUTER
+  Date: 12/5/2023
+  Time: 12:59 PM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@
     <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
 
     <!-- title -->
-    <title>Shop</title>
+    <title>About</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
@@ -87,8 +88,8 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                                     <!-- Add the user login icon -->
-                                    <a class="user-login-icon" href="index.jsp"><i class="fas fa-user-lock"></i></a>
-                                </div>
+                                    <%--                                    <a class="user-login-icon" href="index.jsp"><i class="fas fa-user-lock"></i></a>--%>
+                                    <a href="#"class="user-login-icon" onclick="event.preventDefault(); showLoginPop()"><i class="fas fa-user-lock"></i></a>                                </div>
                             </li>
 
                         </ul>
@@ -102,7 +103,23 @@
 
 <!-- end header -->
 
-
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- end search arewa -->
 
 <!-- breadcrumb-section -->
@@ -111,73 +128,130 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="breadcrumb-text">
-                    <p>Fresh and Organic</p>
-                    <h1>Shop</h1>
+                    <p>We sale fresh fruits</p>
+                    <h1>About Us</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- end breadcrumb section -->
-<%
-    List<Product> products = ProductDB.getAllProducts();
-    request.setAttribute("products", products);
-%>
-<!-- products -->
-<div class="product-section mt-150 mb-150">
+
+<!-- featured section -->
+<div class="feature-bg">
     <div class="container">
-
         <div class="row">
-            <div class="col-md-12">
-                <div class="product-filters">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <c:forEach var="product" items="${products}">
-                            <c:set var="className" value="${fn:replace(product.name, ' ', '-')}" />
-                            <li data-filter=".${className}">${product.name}</li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row product-lists">
-            <c:forEach var="product" items="${products}">
-                <c:set var="className" value="${fn:replace(product.name, ' ', '-')}" />
-                <div class="col-lg-4 col-md-6 text-center ${className}">
-                    <div class="single-product-item">
-                        <div class="product-image">
-                            <!-- Assuming you have an image URL property in your 'product' object -->
-                            <a href="single-product.jsp?fruitID=${product.fruitID}"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-
+            <div class="col-lg-7">
+                <div class="featured-text">
+                    <h2 class="pb-3">Why <span class="orange-text">Fruitkha</span></h2>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+                            <div class="list-box d-flex">
+                                <div class="list-icon">
+                                    <i class="fas fa-shipping-fast"></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Home Delivery</h3>
+                                </div>
+                            </div>
                         </div>
-                        <h3>${product.name}</h3>
-                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-                        <form class="cart-btn" action="cart" method="post">
-                            <input type="hidden" name="fruitID" value="${product.fruitID}">
-                            <input type="submit"  value="Add To Cart">
-                        </form>
+                        <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                            <div class="list-box d-flex">
+                                <div class="list-icon">
+                                    <i class="fas fa-money-bill-alt"></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Best Price</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                            <div class="list-box d-flex">
+                                <div class="list-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Custom Box</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="list-box d-flex">
+                                <div class="list-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="content">
+                                    <h3>Quick Refund</h3>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="pagination-wrap">
-                    <ul>
-                        <li><a href="#">Prev</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a class="active" href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- end products -->
+<!-- end featured section -->
+
+<!-- end shop banner -->
+
+
+<!-- end team section -->
+
+<!-- testimonail-section -->
+<div class="testimonail-section mt-80 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 text-center">
+                <div class="testimonial-sliders">
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar1.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Hoai An <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar2.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Quang Anh <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-testimonial-slider">
+                        <div class="client-avater">
+                            <img src="assets/img/avaters/avatar3.png" alt="">
+                        </div>
+                        <div class="client-meta">
+                            <h3>Minh Phuc <span>Local shop owner</span></h3>
+                            <p class="testimonial-body">
+                                " Sed ut perspiciatis unde omnis iste natus error veritatis et  quasi architecto beatae vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium "
+                            </p>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end testimonail-section -->
 
 <!-- logo carousel -->
 <div class="logo-carousel-section">
@@ -232,9 +306,7 @@
                     <h2 class="widget-title">Pages</h2>
                     <ul>
                         <li><a href="index.jsp">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Shop</a></li>
-                        <li><a href="news.html">News</a></li>
+                        <li><a href="about.jsp">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>

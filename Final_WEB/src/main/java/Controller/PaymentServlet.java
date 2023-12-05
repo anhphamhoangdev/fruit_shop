@@ -37,7 +37,6 @@
             });
 
             try {
-                // Create a message
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(username));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
@@ -57,16 +56,12 @@
             content.append("<h2>Invoice Verification</h2>");
             content.append("<p>Dear " + invoice.getCustomer().getName() + ",</p>");
             content.append("<p>Thank you for your recent purchase. Please verify the details of your invoice:</p>");
-
-            // Display invoice details
             content.append("<p>ID: " + invoice.getInvoiceID() + "</p>");
             content.append("<p>Date: " + invoice.getDate() + "</p>");
-
-            // Display line items
             content.append("<h3>Products</h3>");
             content.append("<ul>");
             for (LineItem lineItem : invoice.getLineItem()) {
-                content.append("<li>" + lineItem.getItem().getName() +"-"+ lineItem.getQuantity()  +" Per Kg" + "</li>");
+                content.append("<li>" + lineItem.getItem().getName() +" with "+ lineItem.getQuantity()  +" Per Kg" + "</li>");
             }
             content.append("</ul>");
             content.append("<p>Total bill: "+cart.getTotalCurrentFormat()+ "</p>");
@@ -77,7 +72,6 @@
 
             return content.toString();
         }
-
 
         @Override
         protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -96,40 +90,50 @@
 
                 String otpValue = (String) session.getAttribute("otp");
 
-                if(otpValue.equals(otpInput)){
-                    Customer customer = (Customer) session.getAttribute("customer");
-                    Invoice invoice = new Invoice();
-                    Collection<LineItem> lineItems = cart.getItems();
-                    invoice.setInvoiceID(invoice.getInvoiceID());
-                    invoice.setCustomer(customer);
-                    invoice.setLineItem(lineItems);
-                    invoice.setDate(new Date());
-                    invoice.setTotal(cart.totalBillWithoutShip()+ cart.Shipping());
-                    String userEmail = customer.getEmail();
-                    UserDB.insert(customer);
-                    InvoiceDB.insert(invoice);
-                    session.setAttribute("invoice",invoice);
+                //check otp value ? LIVE
+                if(otpValue!= null){
+                    if(otpValue.equals(otpInput)){
+                        Customer customer = (Customer) session.getAttribute("customer");
+                        Invoice invoice = new Invoice();
+                        Collection<LineItem> lineItems = cart.getItems();
+                        invoice.setInvoiceID(invoice.getInvoiceID());
+                        invoice.setCustomer(customer);
+                        invoice.setLineItem(lineItems);
+                        invoice.setDate(new Date());
+                        invoice.setTotal(cart.totalBillWithoutShip()+ cart.Shipping());
+                        String userEmail = customer.getEmail();
+                        UserDB.insert(customer);
+                        InvoiceDB.insert(invoice);
+                        session.setAttribute("invoice",invoice);
 
-                    try {
-                        sendEmail(userEmail,generateVerificationEmail(invoice,cart));
-                    } catch (ParseException e) {
-                        throw new RuntimeException(e);
+                        try {
+                            sendEmail(userEmail,generateVerificationEmail(invoice,cart));
+                            session.removeAttribute("cart");
+                            session.removeAttribute("otp");
+                            session.removeAttribute("customer");
+                            // Invalidate the entire session
+                            session.invalidate();
+
+                            url = "/index.jsp";
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+
                     }
-                    session.removeAttribute("cart");
-                    url = "/index.jsp";
-                }
-                else {
+                    else {
+                        url ="/checkout.jsp";
+                        String retryMessage = "Incorrect OTP. Please retry.";
+                        request.setAttribute("retryMessage", retryMessage);
+                    }
+                }else {
                     url ="/checkout.jsp";
-                    String retryMessage = "Incorrect OTP. Please retry.";
+                    String retryMessage = "Please register to receive OTP.";
                     request.setAttribute("retryMessage", retryMessage);
-                    servletContext.getRequestDispatcher(url).forward(request, response);
-                    return;
                 }
             }
             servletContext.getRequestDispatcher(url)
                     .forward(request, response);
         }
-
         @Override
         protected void doGet(HttpServletRequest request,
                              HttpServletResponse response)

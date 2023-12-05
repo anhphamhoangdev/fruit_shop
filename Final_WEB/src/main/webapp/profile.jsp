@@ -41,12 +41,26 @@
   <!-- mean menu css -->
   <link rel="stylesheet" href="assets/css/meanmenu.min.css">
   <!-- main style -->
-  <link rel="stylesheet" href="assets/css/main.css">
+<%--  <link rel="stylesheet" href="assets/css/main.css">--%>
   <!-- responsive -->
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 
 <body>
+<%
+  response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+  response.addHeader("Pragma", "no-cache");
+  response.addDateHeader ("Expires", 0);
+%>
+<%Admin admin1 = (Admin) session.getAttribute("admin");
+  String url ;
+  if(admin1==null){
+    url ="/index.jsp";
+    response.sendRedirect(request.getContextPath() + url);
+
+  }
+
+%>
 <!-- ========================================================== -->
 <div class="preloader">
   <div class="lds-ripple">
@@ -91,19 +105,17 @@
         </ul>
         <!-- ============================================================ -->
         <ul class="navbar-nav ms-auto d-flex align-items-center">
-
-          <!-- ============================================================= -->
-          <li class=" in">
-            <form role="search" class="app-search d-none d-md-block me-3">
-              <input type="text" placeholder="Search..." class="form-control mt-0">
-              <a href="" class="active">
-                <i class="fa fa-search"></i>
-              </a>
+          <li>
+            <form class="logout-form" action="logout" method="post">
+              <%--              <input type="hidden" name="csrf_token" value="your_csrf_token_here">--%>
+              <input type="submit" value="Logout">
             </form>
           </li>
+
           <!-- ============================================================== -->
           <%Admin admin = AdminDB.selectadmin("A001"); %>
           <%request.setAttribute("admin",admin); %>
+
           <li>
             <a class="profile-pic" href="#">
               <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"

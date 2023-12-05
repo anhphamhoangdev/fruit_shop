@@ -4,6 +4,11 @@
 <%@ page import="Data.ProductDB" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%
+    response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+    response.addHeader("Pragma", "no-cache");
+    response.addDateHeader ("Expires", 0);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,21 +40,112 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <style>.my-button {
-        font-family: 'Poppins', sans-serif;
-        display: inline-block;
-        background-color: #F28123;
-        color: #fff;
-        padding: 10px 25px;
-        text-decoration: none; /* Remove underline for anchor tags */
-        border: none; /* Remove default button border */
-        cursor: pointer; /* Change cursor on hover */
-        border-radius: 50px;
-    }
+    <style>
+        .my-button {
+            font-family: 'Poppins', sans-serif;
+            display: inline-block;
+            background-color: #F28123;
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none; /* Remove underline for anchor tags */
+            border: none; /* Remove default button border */
+            cursor: pointer; /* Change cursor on hover */
+            border-radius: 50px;
+        }
 
-    .my-button:hover {
-        background-color: #E06800; /* Change background color on hover */
-    }</style>
+        .my-button:hover {
+            background-color: #E06800; /* Change background color on hover */
+        }
+
+    /* Login form */
+        #content .input-field {
+            color: rgba(0, 0, 0, 0.5); /* Màu chữ mờ */
+            font-weight: bold; /* Chữ đậm khi nhập */
+        }
+        /* Login pop-up styles */
+        .login-popup {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .login-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        form {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        table {
+            width: 100%;
+        }
+
+        table, td {
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        td {
+            padding: 8px;
+            color: #333;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </style>
 
 </head>
 <body>
@@ -74,7 +170,7 @@
                         </a>
                     </div>
                     <!-- logo -->
-                    <a class="mobile-show search-bar-icon" href="/login.jsp"><i class="fa-regular fa-circle-user"></i></a>
+                    <a class="mobile-show search-bar-icon" href="/index.jsp"><i class="fa-regular fa-circle-user"></i></a>
                     <!-- menu start -->
                     <nav class="main-menu">
                         <ul>
@@ -99,8 +195,8 @@
                                 <div class="header-icons">
                                     <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                                     <!-- Add the user login icon -->
-                                    <a class="user-login-icon" href="login.jsp"><i class="fas fa-user-lock"></i></a>
-                                </div>
+<%--                                    <a class="user-login-icon" href="index.jsp"><i class="fas fa-user-lock"></i></a>--%>
+                                    <a href="#"class="user-login-icon" onclick="event.preventDefault(); showLoginPop()"><i class="fas fa-user-lock"></i></a>                                </div>
                             </li>
 
                         </ul>
@@ -237,9 +333,6 @@
                     <div class="single-product-item">
                         <div class="product-image">
                         <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-<%--                        <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>--%>
-<%--                            <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
-<%--                        </div>--%>
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
 
@@ -257,14 +350,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 <!-- latest news -->
 <div class="latest-news pt-150 pb-150">
@@ -452,6 +537,62 @@
 <script src="assets/js/sticker.js"></script>
 <!-- main js -->
 <script src="assets/js/main.js"></script>
+
+<div id="loginPopup" class="login-popup">
+    <div class="login-content">
+        <span class="close"onclick="hideLoginPopup()">&times;</span>
+
+        <div class="login-row">
+            <h2 style="padding: 15px">LOGIN</h2>
+        </div>
+        <form action="<%=request.getContextPath()%>/j_security_check" method="post">
+
+            <input type="hidden" name="check" value ="cus"/>
+            <table style="width: 100%">
+
+                <tr>
+                    <td>UserName</td>
+                    <td><input type="text" name="j_username" /></td>
+
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="j_password" /></td>
+                </tr>
+
+            </table>
+            <input type="submit" value="Login" name="action" />
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+    function showLoginPop() {
+        var popup = document.getElementById("loginPopup");
+        popup.style.display = "block";
+    }
+    function hideLoginPopup() {
+        var popup = document.getElementById("loginPopup");
+        popup.style.display = "none";
+    }
+    // // Get the <span> element that closes the login modal
+    // var span = document.getElementsByClassName("close")[0];
+    // Check if the retryMessage is present and show the pop-up
+    <% String retryMessage = (String) request.getAttribute("retryMessage");
+       if (retryMessage != null) { %>
+    window.onload = function() {
+        showMessage("<%= retryMessage %>");
+    }
+    <% } %>
+
+
+</script>
+
+<script type=”text/javascript” src=”https://code.jquery.com/jquery-1.12.0.min.js”></script>
+<script src=”https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js”></script>
 
 </body>
 </html>

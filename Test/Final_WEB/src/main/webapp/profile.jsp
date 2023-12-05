@@ -19,7 +19,7 @@
   <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
   <meta name="robots" content="noindex,nofollow">
-  <title>Ample Admin Lite Template by WrapPixel</title>
+  <title>Fruitka Admin </title>
   <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -133,7 +133,7 @@
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.jsp"
                aria-expanded="false">
               <i class="fa fa-user" aria-hidden="true"></i>
-              <span class="hide-menu">Profile</span>
+              <span class="hide-menu">Custom page</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -160,18 +160,9 @@
     <div class="page-breadcrumb bg-white">
       <div class="row align-items-center">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-          <h4 class="page-title">Profile page</h4>
+          <h4 class="page-title">Custom page</h4>
         </div>
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-          <div class="d-md-flex">
-            <ol class="breadcrumb ms-auto">
-              <li><a href="#" class="fw-normal">Dashboard</a></li>
-            </ol>
-            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-               class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade
-              to Pro</a>
-          </div>
-        </div>
+
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -234,16 +225,14 @@
                     <select class="form-select shadow-none p-0 border-0 form-control-line" name="fruitID">
                       <c:forEach var="product" items="${product}">
                         <option type="text" value="${product.fruitID}"  >${product.fruitID}</option>
-<%--                        <input type="hidden" name="fruitID" value="${product.fruitID}">--%>
                       </c:forEach>
                     </select>
                   </div>
                 </div>
                 <div class="form-group mb-4">
                   <div class="col-sm-12">
-                      <button class="btn btn-success" type="submit" name="insert">Insert product</button>
-                      <button class="btn btn-success" type="submit" name="update">Update product</button>
-<%--                      <button class="btn btn-success" type="submit" name="remove">Remove product</button>--%>
+                    <button class="btn btn-success" type="submit" name="insert">Insert product</button>
+                    <button class="btn btn-success" type="submit" name="update">Update product</button>
                   </div>
                 </div>
               </form>

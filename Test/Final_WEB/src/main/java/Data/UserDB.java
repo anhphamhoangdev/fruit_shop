@@ -1,5 +1,4 @@
 package Data;
-
 import business.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -61,5 +60,11 @@ public class UserDB {
         return query.getResultList();
     }
 
+    public static boolean emailExist(Customer customer){
+        if(selectUser(customer.getId())!=null){
+            return true;
+        }
+        return false;
+    }
 
 }
