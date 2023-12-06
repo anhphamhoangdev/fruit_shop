@@ -128,7 +128,11 @@
     </div>
 </div>
 <!-- end header -->
-
+<%
+    response.addHeader("Cache-Control", "no-cache,no-store,private,must-revalidate,max-stale=0,post-check=0,pre-check=0");
+    response.addHeader("Pragma", "no-cache");
+    response.addDateHeader ("Expires", 0);
+%>
 <!-- search area -->
 <div class="search-area">
     <div class="container">
@@ -182,14 +186,10 @@
             <div class="col-md-7">
                 <div class="single-product-content">
                     <h3>${product.name}</h3>
-                    <p class="product-price">${product.price} <span>Per Kg</span> </p>
+                    <p class="product-price" style="font-size: 20px;">${product.price} <span>Per Kg</span></p>                    <p><strong>Origin: </strong>${product.origin}</p>
+                    <p><strong>Categories: </strong>Fruits, Organic</p>
                     <p class="product-description">${product.description}</p>
                     <div class="single-product-form">
-<%--                        <form action="index.jsp">--%>
-<%--                            <input type="number" placeholder="0">--%>
-<%--                        </form>--%>
-<%--                        <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>--%>
-
                     <form class="cart-btn fas" action="cart" method="post">
                         <input type="hidden" name="fruitID" value="${product.fruitID}">
                         <button type="submit" class="my-button">
@@ -197,8 +197,6 @@
                         </button>
                     </form>
                     <br>
-
-                        <p>Fruits, Organic</p>
                     </div>
                     <h4>Share:</h4>
                     <ul class="product-share">
@@ -214,53 +212,6 @@
 </div>
 </c:if>
 <!-- end single product -->
-
-<!-- more products -->
-<div class="more-products mb-150">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="section-title">
-                    <h3><span class="orange-text">Related</span> Products</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p class="product-price"><span>Per Kg</span> 85$ </p>
-                    <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p class="product-price"><span>Per Kg</span> 70$ </p>
-                    <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                        <a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-                    </div>
-                    <h3>Lemon</h3>
-                    <p class="product-price"><span>Per Kg</span> 35$ </p>
-                    <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end more products -->
 
 <!-- logo carousel -->
 <div class="logo-carousel-section">
@@ -315,10 +266,7 @@
                     <h2 class="widget-title">Pages</h2>
                     <ul>
                         <li><a href="index.jsp">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Shop</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.jsp">About</a></li>
                     </ul>
                 </div>
             </div>

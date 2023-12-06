@@ -8,49 +8,6 @@ public class RecommendUtil {
     private Map<String,double[]> productsVector;
     List<Invoice> invoices = InvoiceDB.selectInvoice();
 
-//    public static Map<String,double[]>ProductVectors(List<Product> products){
-//        Map<String, Map<String, Object>> productVectors = new HashMap<>();
-//        for(Product product : products){
-//
-//            String productName = product.getName();
-//            if(!productVectors.containsKey(productName)){
-//                Map<String, Object> productAttributes = new HashMap<>();
-//                productAttributes.put("quantity", 0); // Initial quantity
-//                productAttributes.put("price", product.getPrice());
-//                productAttributes.put("origin", product.getOrigin());
-//                productVectors.put(productName, productAttributes);
-//            }
-//
-//        }
-//        Map<String, double[]> result = new HashMap<>();
-//        for (Map.Entry<String, Map<String, Object>> entry : productVectors.entrySet()) {
-//            String productName = entry.getKey();
-//            Map<String, Object> attributes = entry.getValue();
-//            Object originValue = attributes.get("origin");
-//            double origin;
-//
-//            if (originValue instanceof Integer) {
-//                origin =  (double) (int) originValue;
-//            } else if (originValue instanceof String) {
-//                try {
-//                    origin = Double.parseDouble((String) originValue);
-//                } catch (NumberFormatException e) {
-//                    origin = 0.0;
-//                }
-//            } else {
-//                origin = 0.0;
-//            }
-//
-//            double[] vector = {
-//                    (int) attributes.get("quantity"),
-//                    (double) attributes.get("price"),
-//                    origin
-//            };
-//
-//            result.put(productName, vector);
-//        }
-//        return result;
-//    }
     private static Map<String, Double> createOriginToNumberMap(List<Product> products) {
         Map<String, Double> originToNumberMap = new HashMap<>();
         double value = 1.0;

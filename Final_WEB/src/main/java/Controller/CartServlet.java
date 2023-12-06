@@ -73,10 +73,7 @@ public class CartServlet extends HttpServlet {
         else if (action.equals("checkout")) {
             url = "/checkout.jsp";
         }
-        else if (action.equals("back")) {
-            session.removeAttribute("cart");
-            url = "/index.jsp";
-        }
+
         sc.getRequestDispatcher(url)
                 .forward(request, response);
     }

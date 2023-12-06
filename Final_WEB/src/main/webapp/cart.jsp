@@ -99,10 +99,10 @@
                         <ul>
                             <li class="current-list-item"><a href="index.jsp">Home</a>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.jsp">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="about.jsp">About</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
@@ -245,28 +245,28 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <% List<Product> recommended = (List<Product>) session.getAttribute("productRecommended");
+        <% List<Product> recommended = (List<Product>) session.getAttribute("productRecommended");
             request.setAttribute("products", recommended);
-            %>
+        %>
+        <div class="row">
             <c:forEach var="product" items="${products}">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
-                        <div class="product-image">
-                            <a href="single-product.jsp"><img src="./assets/img/products/product-img-1.jpg" alt=""></a>
-                        </div>
-                        <h3>${product.name}</h3>
-                        <p class="product-price"><span>Per Kg</span> ${product.price} </p>
-                        <form class="cart-btn fas" action="cart" method="post">
-                            <input type="hidden" name="fruitID" value="${product.fruitID}">
-                            <button type="submit" class="my-button">
-                                <i class="fas fa-shopping-cart"></i> Add To Cart
-                            </button>
-                        </form>
+                        <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="assets/img/products/product-img-1.jpg" alt="">
+                            <h3>${product.name}</h3>
+                            <p class="product-price"><span>Per Kg</span> ${product.price} </p>
+
+                            <form class="cart-btn fas" action="cart" method="post">
+                                <input type="hidden" name="fruitID" value="${product.fruitID}">
+                                <button type="submit" class="my-button">
+                                    <i class="fas fa-shopping-cart"></i> Add To Cart
+                                </button>
+                            </form>
+                        </a>
                     </div>
                 </div>
             </c:forEach>
+        </div>
         </div>
     </div>
 </div>
@@ -362,5 +362,6 @@
 <!-- main js -->
 <script src="assets/js/main.js"></script>
 
+</div>
 </body>
 </html>

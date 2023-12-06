@@ -26,6 +26,8 @@ public class OtpServlet extends HttpServlet {
         // Your email configuration
         final String username = "fsmile3107@gmail.com";
         final String password = "ptkc prht nagg sxwk";
+        // Thiết lập Content-Type là text/html
+
 
         // Set the properties
         Properties props = new Properties();
