@@ -90,6 +90,52 @@
       background-color: #E06800; /* Darker orange on hover */
     }
 
+    .section {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-header {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .section-content {
+      margin-top: 20px;
+    }
+
+    .content-box {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+    }
+
+
+    .radio-content-input {
+      display: inline-flex; /* Set to inline-flex to make it inline */
+      align-items: center;
+    }
+
+    .main-img {
+      width: 50px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .radio-label-primary {
+      /*font-weight: bold;*/
+      display: inline; /* Set to inline to make it inline */
+    }
+
+
   </style>
 </head>
 <body>
@@ -199,8 +245,31 @@
                       <p><input name="Phone" type="tel" placeholder="Phone" value="${customer.name}" required></p>
                       <p><input name="Credit" type="text" placeholder="Paypal,Visa,..." value="${customer.creditCard}" required></p>
                       <p><textarea name="bill" id="bill" cols="30" rows="10" placeholder="Say Something"></textarea></p>
-
-                      <input type="submit" value="Send OTP">
+                      <div id="section-payment-method" class="section">
+                        <div class="order-checkout__loading--box">
+                          <div class="order-checkout__loading--circle"></div>
+                        </div>
+                        <div class="section-header">
+                          <h2 class="section-title" _msttexthash="264121" _msthash="121">Payment methods</h2>
+                        </div>
+                        <div class="section-content">
+                          <div class="content-box">
+                            <div class="radio-wrapper content-box-row">
+                              <label class="radio-label">
+                                <div class="radio-input payment-method-checkbox"></div>
+                                <div class="radio-content-input">
+                                  <img class="main-img" src="https://hstatic.net/0/0/global/design/seller/image/payment/cod.svg?v=6" alt="COD Icon">
+                                  <div>
+                                    <span class="radio-label-primary" _msttexthash="322322" _msthash="122">Pay on delivery (COD)</span>
+                                    <span class="quick-tagline hidden"></span>
+                                  </div>
+                                </div>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <input type="submit" value="ORDER NOW">
                     </form>
 
                   </div>
@@ -264,7 +333,7 @@
           </table>
 <%--          <a href="#" class="boxed-btn">Place Order</a>--%>
           <div style="padding: 20px;"></div>
-          <button id="myBtn" class="boxed-btn" >Submit OTP</button>
+          <button id="myBtn" class="boxed-btn" >ORDER FULFILLMENT</button>
           <!-- The Modal -->
           <div id="myModal" class="modal">
             <!-- Modal content -->
