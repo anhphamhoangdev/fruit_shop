@@ -52,8 +52,8 @@ public class CartServlet extends HttpServlet {
             lineItem.setItem(product);
             lineItem.setQuantity(quantity);
 
-
             if (quantity > 0) {
+
                 cart.addItem(lineItem, type);
                 Collection<LineItem> lineItems = cart.getItems();
                 List<Product> customerPurchasedProducts = new ArrayList<>();

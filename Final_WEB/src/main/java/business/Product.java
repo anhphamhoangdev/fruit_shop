@@ -21,19 +21,13 @@ public class Product {
 
 
     @Basic
-    private Integer price;
-
-
+    private double price;
 
     @Basic
     private Date exp;
 
-
     @Basic
     private Date dateInput;
-
-
-
 
     @Basic
     private String name;
@@ -62,13 +56,11 @@ public class Product {
         Origin = origin;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
+    public double getPrice() {return price;}
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
+    public void setPrice(double price) {this.price = price;}
+
+
 
     public Date getExp() {
         return exp;

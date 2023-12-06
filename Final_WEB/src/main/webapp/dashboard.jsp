@@ -82,12 +82,6 @@
         <ul class="navbar-nav ms-auto d-flex align-items-center">
 
           <li class=" in">
-<%--            <form role="search" class="app-search d-none d-md-block me-3">--%>
-<%--              <input type="text" placeholder="Search..." class="form-control mt-0">--%>
-<%--              <a href="" class="active">--%>
-<%--                <i class="fa fa-search"></i>--%>
-<%--              </a>--%>
-<%--            </form>--%>
 
 
           </li>
@@ -186,7 +180,7 @@
                                                 style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                 </div>
               </li>
-              <li class="ms-auto"><span class="counter text-success"><%=total_revenue%></span></li>
+              <li class="ms-auto"><span class="counter text-success"><%=String.format("%.2f",total_revenue)+ " $"%></span></li>
             </ul>
           </div>
         </div>
@@ -263,7 +257,7 @@
                 </select>
               </div>
             </div>
-            <%List<Invoice> invoice =  (List<Invoice>) session.getAttribute("invoice"); %>
+            <%List<Invoice> invoice =  (List<Invoice>) InvoiceDB.selectInvoice(); %>
             <%request.setAttribute("invoice",invoice); %>
             <div class="table-responsive">
               <table class="table no-wrap">
@@ -279,7 +273,7 @@
                   <tr>
                     <td>${invoice.invoiceID}</td>
                     <td class="txt-oflo">${invoice.date}</td>
-                    <td><span class="text-success">${invoice.total}</span></td>
+                    <td><span class="text-success">${String.format("%.2f",invoice.total)}</span></td>
 
                   </tr>
                 </c:forEach>

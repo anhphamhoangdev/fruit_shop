@@ -36,6 +36,9 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("retryMessage", retryMessage);
             }
         }
+        else {
+            url ="/404.html";
+        }
         sc.getRequestDispatcher(url)
                 .forward(request, response);
 

@@ -37,6 +37,7 @@
     <!-- mean menu css -->
     <link rel="stylesheet" href="assets/css/meanmenu.min.css">
     <!-- main style -->
+
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- responsive -->
     <link rel="stylesheet" href="assets/css/responsive.css">
@@ -332,7 +333,7 @@
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
                         <div class="product-image">
-                        <a href="single-product.jsp?fruitID=${product.fruitID}" ><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+                        <img src="assets/img/products/product-img-1.jpg" alt="">
                         <h3>${product.name}</h3>
                         <p class="product-price"><span>Per Kg</span> ${product.price} </p>
 
@@ -545,15 +546,12 @@
         <div class="login-row">
             <h2 style="padding: 15px">LOGIN</h2>
         </div>
-        <form action="<%=request.getContextPath()%>/j_security_check" method="post">
-
+        <form  action="<%=request.getContextPath()%>/j_security_check" method="post">
             <input type="hidden" name="check" value ="cus"/>
             <table style="width: 100%">
-
                 <tr>
                     <td>UserName</td>
                     <td><input type="text" name="j_username" /></td>
-
                 </tr>
                 <tr>
                     <td>Password</td>
@@ -561,7 +559,7 @@
                 </tr>
 
             </table>
-            <input type="submit" value="Login" name="action" />
+            <input type="submit" value="Login" name ="action" />
         </form>
 
     </div>
@@ -578,15 +576,14 @@
         var popup = document.getElementById("loginPopup");
         popup.style.display = "none";
     }
-    // // Get the <span> element that closes the login modal
-    // var span = document.getElementsByClassName("close")[0];
-    // Check if the retryMessage is present and show the pop-up
+
     <% String retryMessage = (String) request.getAttribute("retryMessage");
        if (retryMessage != null) { %>
     window.onload = function() {
         showMessage("<%= retryMessage %>");
     }
     <% } %>
+
 
 
 </script>

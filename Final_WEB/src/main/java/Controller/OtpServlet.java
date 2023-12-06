@@ -1,4 +1,5 @@
 package Controller;
+import business.Cart;
 import business.Customer;
 import jakarta.mail.*;
 import jakarta.mail.Authenticator;
@@ -71,32 +72,41 @@ public class OtpServlet extends HttpServlet {
             url ="/shop.jsp";
         }
         else if (action == "sendEmail"){
-            String name = request.getParameter("Name");
-            String address = request.getParameter("Address");
-            String contact = request.getParameter("Phone");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String userEmail = request.getParameter("Email");
-            String moreInfo = request.getParameter("bill");
-            String card = request.getParameter("Credit");
-            Customer customer = new Customer();
-            customer.setId(customer.getId());
-            customer.setName(name);
-            customer.setEmail(userEmail);
-            customer.setContact(contact);
-            customer.setAddress(address);
-            customer.setCreditCard(card);
-            session.setAttribute("customer",customer);
-            if(customer != null) {
-                String otp = generateOtp();
-                session.setAttribute("otp", otp);
-                sendOtpEmail(userEmail, otp);
-                response.getWriter().println("OTP sent to " + userEmail);
-                session.setAttribute("emailOTP", userEmail);
-                String Message = "Please check your email. Please confirm OTP";
-                request.setAttribute("Message", Message);
+            Cart cart =(Cart) session.getAttribute("cart");
+            if(cart!=null){
+
+                String name = request.getParameter("Name");
+                String address = request.getParameter("Address");
+                String contact = request.getParameter("Phone");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String userEmail = request.getParameter("Email");
+                String moreInfo = request.getParameter("bill");
+                String card = request.getParameter("Credit");
+                Customer customer = new Customer();
+                customer.setId(customer.getId());
+                customer.setName(name);
+                customer.setEmail(userEmail);
+                customer.setContact(contact);
+                customer.setAddress(address);
+                customer.setCreditCard(card);
+                customer.setFeedback(moreInfo);
+                session.setAttribute("customer",customer);
+                if(customer != null) {
+                    String otp = generateOtp();
+                    session.setAttribute("otp", otp);
+                    sendOtpEmail(userEmail, otp);
+                    response.getWriter().println("OTP sent to " + userEmail);
+                    session.setAttribute("emailOTP", userEmail);
+                    String Message = "Please check your email. Please confirm OTP";
+                    request.setAttribute("Message", Message);
+                }
+                else {
+                    String retryMessage = "Please fill information.";
+                    request.setAttribute("retryMessage", retryMessage);
+                }
             }
             else {
-                String retryMessage = "Please fill information.";
+                String retryMessage = "Please add products.";
                 request.setAttribute("retryMessage", retryMessage);
             }
         }

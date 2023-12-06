@@ -79,8 +79,14 @@ public class Cart implements Serializable {
         return currency.format(this.totalBillWithoutShip());
     }
     public double Shipping(){
-        return this.totalBillWithoutShip()*0.1;
+        if(totalBillWithoutShip()<75) {
+            return this.totalBillWithoutShip() * 0.1;
+        }
+        else {
+            return 0;
+        }
     }
+
     public String getTotalCurrentFormat() {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         double total = this.totalBillWithoutShip() + this.Shipping();

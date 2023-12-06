@@ -58,6 +58,6 @@ public class AdminDB {
             em.close();
         }
 
-        return (Admin) result;
+        return result;
     }
 }

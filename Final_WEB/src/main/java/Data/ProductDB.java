@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ProductDB {
-    public static void insert(String name, String origin, Integer price, Date exp, Date input, String decription) {
+    public static void insert(String name, String origin, Double price, Date exp, Date input, String decription) {
         Product product = new Product();
         product.setName(name);
         product.setOrigin(origin);
@@ -35,7 +35,9 @@ public class ProductDB {
             em2.close();
         }
     }
-    public static void Update(String fruitID, String name, String origin, String description, int price, Date exp, Date dateinput){
+
+
+    public static void Update(String fruitID, String name, String origin, String description, double price, Date exp, Date dateinput){
         EntityManager em2 = DBUtil.getEmFactory().createEntityManager();
         EntityTransaction transaction = em2.getTransaction();
         Product product = ProductDB.selectProduct(fruitID);

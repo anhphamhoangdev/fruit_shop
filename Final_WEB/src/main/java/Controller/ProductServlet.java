@@ -27,7 +27,7 @@ public class ProductServlet extends HttpServlet {
             if(insert != null) {
                 String name = req.getParameter("NameProduct");
                 String price = req.getParameter("Price");
-                int priceProduct = Integer.parseInt(price);
+                double priceProduct = Double.parseDouble(price);
                 String dateString = req.getParameter("exp");
                 String Description = req.getParameter("Description");
                 Date exp = null;

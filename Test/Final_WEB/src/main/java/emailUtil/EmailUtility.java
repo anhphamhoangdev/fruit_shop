@@ -18,7 +18,7 @@ import jakarta.mail.*;
 public class EmailUtility {
     public static void sendEmail(String host, String port,
                                  final String userName, final String password, String toAddress,
-                                 String subject, String message) throws AddressException,
+                                 String subject, String message) throws
             MessagingException {
 
         // sets SMTP server properties
