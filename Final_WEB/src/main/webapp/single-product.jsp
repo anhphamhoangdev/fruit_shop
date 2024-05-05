@@ -81,28 +81,28 @@
                             <li class="current-list-item"><a href="#">Home</a>
                                 <ul class="sub-menu">
                                     <li><a href="index.jsp">Static Home</a></li>
-                                    <li><a href="index_2.html">Slider Home</a></li>
+                                    <li><a href="index.jsp">Slider Home</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">About</a></li>
+                            <li><a href="about.jsp">About</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="sub-menu">
-                                    <li><a href="404.html">404 page</a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="index.jsp">404 page</a></li>
+                                    <li><a href="about.jsp">About</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                     <li><a href="checkout.jsp">Check Out</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="index.jsp">Contact</a></li>
+                                    <li><a href="index.jsp">News</a></li>
                                     <li><a href="shop.jsp">Shop</a></li>
                                 </ul>
                             </li>
-                            <li><a href="news.html">News</a>
+                            <li><a href="index.jsp">News</a>
                                 <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
+                                    <li><a href="index.jsp">News</a></li>
+                                    <li><a href="index.jsp">Single News</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.jsp">Contact</a></li>
                             <li><a href="shop.jsp">Shop</a>
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>

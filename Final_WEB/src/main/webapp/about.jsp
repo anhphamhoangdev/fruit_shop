@@ -307,7 +307,6 @@
                     <ul>
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="about.jsp">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>

@@ -50,7 +50,7 @@ public class ProductServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 String origin = req.getParameter("Origin");
-                ProductDB.insert(name,origin,priceProduct,exp,date,Description);
+                ProductDB.insert(name,origin, (double) priceProduct,exp,date,Description);
             }
             else if (update != null) {
                 String name = req.getParameter("NameProduct");

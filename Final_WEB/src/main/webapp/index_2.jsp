@@ -72,24 +72,23 @@
                                     <%--                                    <li><a href=index.jsp>Slider Home</a></li>--%>
                                 </ul>
                             </li>
-                            <li><a href="news.html">News</a>
+                            <li>News
                                 <ul class="sub-menu">
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="single-news.html">Single News</a></li>
+
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="shop.html">Shop</a>
+                            <li>Contact</li>
+                            <li>Shop
                                 <ul class="sub-menu">
                                     <li><a href="shop.jsp">Shop</a></li>
-                                    <li><a href="checkout.html">Check Out</a></li>
+                                    <li>Check Out</li>
                                     <li><a href="single-product.jsp">Single Product</a></li>
                                     <li><a href="cart.jsp">Cart</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <div class="header-icons">
-                                    <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a>
                                     <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
                                 </div>
                             </li>
@@ -136,8 +135,7 @@
                             <p class="subtitle">Fresh & Organic</p>
                             <h1>Delicious Seasonal Fruits</h1>
                             <div class="hero-btns">
-                                <a href="shop.html" class="boxed-btn">Fruit Collection</a>
-                                <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                <a href="shop.jsp" class="boxed-btn">Fruit Collection</a>
                             </div>
                         </div>
                     </div>
@@ -155,8 +153,6 @@
                             <p class="subtitle">Fresh Everyday</p>
                             <h1>100% Organic Collection</h1>
                             <div class="hero-btns">
-                                <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                <a href="contact.html" class="bordered-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -174,8 +170,6 @@
                             <p class="subtitle">Mega Sale Going On!</p>
                             <h1>Get December Discount</h1>
                             <div class="hero-btns">
-                                <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                <a href="contact.html" class="bordered-btn">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -409,7 +403,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="news.html" class="boxed-btn">More News</a>
+
             </div>
         </div>
     </div>
